@@ -17,6 +17,10 @@ from src.optimize.LP_team_optimizer_11P import (
     build_team_optimizer,
 )
 
+from src.optimize.LP_team_optimizer_PPM import (
+    build_team_optimizer as build_team_optimizer_ppm,
+)
+
 from src.optimize.ML_team_optimizer_11P import (
     load_predictions_for_gw,
     optimize_team_from_predictions,
@@ -129,6 +133,12 @@ def main():
         objective_col="points_per_game",
     )
 
+    ppm_team, _ = build_team_optimizer_ppm(
+        players,
+        budget=100.0,
+        objective_col="points_per_million",
+    )
+
     finished_gws, _ = get_finished_and_future_gameweeks()
     if not finished_gws:
         print("No finished gameweeks found in API.")
@@ -147,8 +157,11 @@ def main():
     for gw in finished_gws:
         print(f"\n=== Evaluating GW {gw} ===")
 
-        # LP team: static squad, same XI & captain all season
+        # LP team: static squad, same XI & captain all season (based off of points per game)
         lp_points = compute_team_points_for_gw(lp_team, gw)
+
+        # LP PPM team: static squad, same XI & captain all season, based off of points per million (market efficiency)
+        ppm_points = compute_team_points_for_gw(ppm_team, gw)
 
         # ML team: optimized fresh for this GW from predictions_gw<gw>.csv
         try:
@@ -165,6 +178,7 @@ def main():
             {
                 "gw": gw,
                 "lp_points": lp_points,
+                "ppm_points": ppm_points,
                 "ml_points": ml_points,
                 "average_points": avg_points,
                 "lp_minus_avg": lp_points - avg_points,
@@ -181,9 +195,11 @@ def main():
 
     # Cumulative sums
     df["cum_lp_points"] = df["lp_points"].cumsum()
+    df["cum_ppm_points"] = df["ppm_points"].cumsum()
     df["cum_ml_points"] = df["ml_points"].cumsum()
     df["cum_average_points"] = df["average_points"].cumsum()
     df["cum_lp_minus_avg"] = df["cum_lp_points"] - df["cum_average_points"]
+    df["cum_ppm_minus_avg"] = df["cum_ppm_points"] - df["cum_average_points"]
     df["cum_ml_minus_avg"] = df["cum_ml_points"] - df["cum_average_points"]
 
     print("\n=== Week-by-week comparison: LP vs ML vs FPL average ===")
@@ -191,17 +207,22 @@ def main():
 
     # Overall summary
     total_lp = df["lp_points"].sum()
+    total_ppm = df["ppm_points"].sum()
     total_ml = df["ml_points"].sum()
     total_avg = df["average_points"].sum()
 
     print("\n=== Overall totals over finished gameweeks ===")
     print(f"Gameweeks evaluated:               {len(df)}")
     print(f"LP team total points:              {total_lp:.1f}")
+    print(f"LP_PPM team total points:              {total_ppm:.1f}")
     print(f"ML team total points:              {total_ml:.1f}")
     print(f"Official FPL average total points: {total_avg:.1f}")
     print(f"LP - average:                      {total_lp - total_avg:.1f}")
+    print(f"LP_PPM - average:                  {total_ppm - total_avg:.1f}")
     print(f"ML - average:                      {total_ml - total_avg:.1f}")
+    print(f"LP - LP_PPM:                       {total_lp - total_ppm:.1f}")
     print(f"ML - LP:                           {total_ml - total_lp:.1f}")
+    print(f"ML - LP:                           {total_ml - total_ppm:.1f}")
 
     # Optional: save to CSV
     eval_dir = PROJECT_ROOT / "results" / "evaluation"
