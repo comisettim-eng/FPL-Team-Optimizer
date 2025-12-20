@@ -1,32 +1,22 @@
-"""
-LP_team_optimizer_11P.py
-
-Build an optimal FPL squad (15 players, 11 starters, 1 captain) with
-standard FPL constraints, and optionally enforce a limited number of
-transfers compared to a previous squad.
-
-- Can be run standalone (uses players_clean.csv and points_per_game)
-- Can be imported and used from ML season optimizers with
-  prev_squad_ids + transfers_per_gw to do season-long optimization.
-"""
-
 from pathlib import Path
-from typing import Tuple, Optional, List
+from typing import Tuple, List, Optional
 
 import pandas as pd
 import pulp as pl
 
-# ---------------------------------------------------------------------
-# Paths
-# ---------------------------------------------------------------------
+# -------------------------------------------------------------------
+# PATHS
+# -------------------------------------------------------------------
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = PROJECT_ROOT / "data" / "processed"
 PLAYERS_CSV = DATA_DIR / "players_clean.csv"
 
+RESULTS_DIR = PROJECT_ROOT / "results" / "lp_solutions_no_ml"
 
-# ---------------------------------------------------------------------
-# Data loading
-# ---------------------------------------------------------------------
+
+# -------------------------------------------------------------------
+# DATA LOADING
+# -------------------------------------------------------------------
 def load_players(
     path: Path = PLAYERS_CSV,
     min_minutes: int = 270,
@@ -41,14 +31,13 @@ def load_players(
     min_minutes : int
         Minimum total minutes played this season to keep a player (=270 -> 3 full games).
     only_available : bool
-        If True and a 'status' column exists, keep only players with
-        status in ['a', 'd', 's'] (available / doubtful / suspended).
+        If True and a 'status' column exists, keep only players with status in
+        ['a', 'd', 's'] (available, doubtful, suspended).
     """
     df = pd.read_csv(path)
 
-    # basic cleaning for the optimizer
-    if "minutes" in df.columns:
-        df = df[df["minutes"] >= min_minutes].copy()
+    # Basic cleaning for the optimizer
+    df = df[df["minutes"] >= min_minutes].copy()
 
     if only_available and "status" in df.columns:
         df = df[df["status"].isin(["a", "d", "s"])].copy()
@@ -56,9 +45,9 @@ def load_players(
     return df
 
 
-# ---------------------------------------------------------------------
-# Core LP optimizer
-# ---------------------------------------------------------------------
+# -------------------------------------------------------------------
+# CORE LP MODEL
+# -------------------------------------------------------------------
 def build_team_optimizer(
     players: pd.DataFrame,
     budget: float = 100.0,
@@ -71,37 +60,29 @@ def build_team_optimizer(
     transfers_per_gw: int = 0,
 ) -> Tuple[pd.DataFrame, pl.LpProblem]:
     """
-    Build and solve a single-GW optimization problem.
+    Build a single-gameweek optimization problem.
 
     Parameters
     ----------
     players : DataFrame
-        Must contain columns:
-            player_id, name, team_id, team_name, position, price
-        plus a column used as objective (e.g. 'points_per_game' or
-        'predicted_points').
+        Must contain columns: [player_id, name, team_id, team_name, position, price]
+        plus a column used as objective (e.g. 'points_per_game').
         Optionally may contain:
-            - 'minutes' (total season minutes)
-            - 'minutes_share_5', 'games_played_5' (recent nailedness)
-            - 'status' (availability: a/d/s etc.)
+        - 'minutes' (total season minutes)
+        - 'minutes_share_5', 'games_played_5' (recent "nailedness" features)
+        - 'status' (for availability: a/d/s etc.)
 
     prev_squad_ids : list[int] or None
         If provided and transfers_per_gw > 0, we enforce that exactly
-        len(prev_squad_ids) - transfers_per_gw of those players remain
-        in the new 15-man squad, i.e. exactly transfers_per_gw players
-        are changed.
-        If None or transfers_per_gw == 0, no transfer constraint is used.
-
-    transfers_per_gw : int
-        Number of allowed transfers compared to prev_squad_ids.
+        len(prev_squad_ids) - transfers_per_gw of these players remain
+        in the new 15-man squad (i.e. exactly transfers_per_gw players are changed).
 
     Returns
     -------
     selected : DataFrame
         Subset of players representing the optimal 15-man squad.
-        Includes flags is_starter, is_captain, objective_value.
     model : pulp.LpProblem
-        The solved optimization model (for inspection / debugging).
+        The solved optimization model.
     """
     df = players.copy()
 
@@ -121,7 +102,7 @@ def build_team_optimizer(
     if only_available and "status" in df.columns:
         df = df[df["status"].isin(["a", "d", "s"])].copy()
 
-    # Check that chosen objective exists
+    # Check that chosen variable exists
     if objective_col not in df.columns:
         raise ValueError(f"objective column '{objective_col}' not found in DataFrame")
 
@@ -129,9 +110,7 @@ def build_team_optimizer(
     df = df.reset_index(drop=True)
     indices = df.index.tolist()
 
-    # -----------------------------------------------------------------
-    # Decision variables
-    # -----------------------------------------------------------------
+    # Decision Variables
     x = pl.LpVariable.dicts("select", indices, lowBound=0, upBound=1, cat="Binary")   # in squad
     y = pl.LpVariable.dicts("start", indices, lowBound=0, upBound=1, cat="Binary")    # starting XI
     c = pl.LpVariable.dicts("captain", indices, lowBound=0, upBound=1, cat="Binary")  # captain
@@ -139,29 +118,25 @@ def build_team_optimizer(
     # Define the problem
     model = pl.LpProblem("FPL_Team_Selection", pl.LpMaximize)
 
-    # Objective: maximize projected points of starters + captain (double)
+    # Objective function: maximize points of starters + captain (double)
     model += pl.lpSum(
         df.loc[i, objective_col] * (y[i] + c[i]) for i in indices
     ), "Total_Projected_Points"
 
-    # -----------------------------------------------------------------
-    # Constraints
-    # -----------------------------------------------------------------
-
-    # Budget
+    # Budget constraint
     model += pl.lpSum(df.loc[i, "price"] * x[i] for i in indices) <= budget, "Budget"
 
-    # Exactly 15 players in squad
+    # Exactly 15 players in full squad
     model += pl.lpSum(x[i] for i in indices) == 15, "Squad_Size"
 
-    # Positional squad constraints
+    # Positional constraints in squad
     for pos, required in {"GK": 2, "DEF": 5, "MID": 5, "FWD": 3}.items():
         model += (
             pl.lpSum(x[i] for i in indices if df.loc[i, "position"] == pos) == required,
             f"{pos}_squad_count",
         )
 
-    # Starting XI = 11
+    # Only 11 players start
     model += pl.lpSum(y[i] for i in indices) == 11, "Starting_XI_Size"
 
     # Exactly 1 GK in starting XI
@@ -184,7 +159,7 @@ def build_team_optimizer(
         "Min_Starting_FWD",
     )
 
-    # A player can only start if he is in the squad
+    # A player can only start if in squad
     for i in indices:
         model += y[i] <= x[i], f"start_only_if_selected_{i}"
 
@@ -196,29 +171,24 @@ def build_team_optimizer(
         model += c[i] <= y[i], f"captain_must_start_{i}"
 
     # Max 3 players per real-life team
-    if "team_name" in df.columns:
-        for team in df["team_name"].unique():
-            model += (
-                pl.lpSum(x[i] for i in indices if df.loc[i, "team_name"] == team) <= 3,
-                f"Max_3_from_{team}",
-            )
+    for team in df["team_name"].unique():
+        model += (
+            pl.lpSum(x[i] for i in indices if df.loc[i, "team_name"] == team) <= 3,
+            f"Max_3_from_{team}",
+        )
 
-    # -----------------------------------------------------------------
-    # Transfer constraint (optional)
-    # -----------------------------------------------------------------
-    if prev_squad_ids is not None and transfers_per_gw > 0:
-        # map previous squad ids to current index set
+    # === ONE-TRANSFER CONSTRAINT (if previous squad is provided) ===
+    if prev_squad_ids is not None and len(prev_squad_ids) > 0 and transfers_per_gw > 0:
+        # map prev_squad_ids to current indices (players may be filtered out)
         prev_indices = [i for i in indices if df.loc[i, "player_id"] in prev_squad_ids]
         if prev_indices:
-            required_kept = max(len(prev_indices) - transfers_per_gw, 0)
+            kept_required = max(len(prev_indices) - transfers_per_gw, 0)
             model += (
-                pl.lpSum(x[i] for i in prev_indices) == required_kept,
+                pl.lpSum(x[i] for i in prev_indices) == kept_required,
                 "Transfer_Limit_From_Previous_Squad",
             )
 
-    # -----------------------------------------------------------------
     # Solve
-    # -----------------------------------------------------------------
     model.solve(pl.PULP_CBC_CMD(msg=False))
 
     # Collect selected players
@@ -235,7 +205,7 @@ def build_team_optimizer(
     captain_idx = [i for i in indices if c[i].value() == 1]
     selected.loc[selected.index.isin(captain_idx), "is_captain"] = True
 
-    # Sort nicely
+    # Sort nicely for display
     pos_order = {"GK": 0, "DEF": 1, "MID": 2, "FWD": 3}
     selected["pos_sort"] = selected["position"].map(pos_order)
     selected.sort_values(["is_starter", "pos_sort"], ascending=[False, True], inplace=True)
@@ -251,50 +221,70 @@ def build_team_optimizer(
     return selected, model
 
 
-# ---------------------------------------------------------------------
-# Standalone main (single-GW optimization using points_per_game)
-# ---------------------------------------------------------------------
-def main():
+# -------------------------------------------------------------------
+# SEASON LOOP (NO ML, CONSTANT OBJECTIVE)
+# -------------------------------------------------------------------
+def optimize_season_no_ml(num_gws: int = 9):
+    """
+    Pure LP season optimizer with one transfer per GW and a fixed objective
+    (e.g. points_per_game). No ML / predictions.
+
+    For GW1: build best squad from scratch.
+    For GW2..N: same objective, but exactly 1 player changed each GW.
+    """
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+
     players = load_players()
-    best_team, model = build_team_optimizer(
-        players,
-        budget=100.0,
-        objective_col="points_per_game",
-        min_minutes_season=270,
-        min_minutes_share_5=0.40,
-        min_games_played_5=2.0,
-        only_available=True,
-        prev_squad_ids=None,
-        transfers_per_gw=0,
-    )
 
-    print("Status:", pl.LpStatus[model.status])
-    print("\nTotal projected points:", pl.value(model.objective))
+    prev_squad_ids: Optional[List[int]] = None
+    all_squads = {}
 
-    cols_to_show = [
-        "is_starter",
-        "is_captain",
-        "position",
-        "name",
-        "team_name",
-        "price",
-        "points_per_game",
-        "points_per_90",
-        "points_per_million",
-    ]
-    print("\nOptimal squad (single GW demo):")
-    print(best_team[cols_to_show].to_string(index=False))
+    for gw in range(1, num_gws + 1):
+        print(f"\n=== Optimizing GW{gw} (no ML, objective = points_per_game) ===")
 
-    output_dir = PROJECT_ROOT / "results" / "lp_solutions"
-    output_dir.mkdir(parents=True, exist_ok=True)
+        if gw == 1:
+            transfers = 0  # first squad, no previous team
+        else:
+            transfers = 1  # exactly 1 transfer per GW
 
-    output_path = output_dir / "best_team_lp_demo.csv"
-    best_team.to_csv(output_path, index=False)
-    print(f"\nSaved optimized team to: {output_path}")
+        best_team, model = build_team_optimizer(
+            players,
+            budget=100.0,
+            objective_col="points_per_game",
+            min_minutes_season=270,
+            min_minutes_share_5=0.40,
+            min_games_played_5=2.0,
+            only_available=True,
+            prev_squad_ids=prev_squad_ids,
+            transfers_per_gw=transfers,
+        )
 
-    xi_path = output_dir / "starting_xi_lp_demo.csv"
-    best_team[best_team["is_starter"]].to_csv(xi_path, index=False)
-    print(f"Saved starting XI to: {xi_path}")
+        print("Status:", pl.LpStatus[model.status])
+        print("Total projected points:", pl.value(model.objective))
+
+        # Save full squad and XI
+        gw_tag = f"GW{gw:02d}"
+        out_path = RESULTS_DIR / f"best_team_lp_{gw_tag}.csv"
+        best_team.to_csv(out_path, index=False)
+
+        xi = best_team[best_team["is_starter"]].copy()
+        xi_path = RESULTS_DIR / f"starting_xi_lp_{gw_tag}.csv"
+        xi.to_csv(xi_path, index=False)
+
+        print(f"Saved squad to: {out_path}")
+        print(f"Saved starting XI to: {xi_path}")
+
+        prev_squad_ids = best_team["player_id"].tolist()
+        all_squads[gw_tag] = best_team
+
+    return all_squads
+
+
+# -------------------------------------------------------------------
+# MAIN
+# -------------------------------------------------------------------
+def main():
+    optimize_season_no_ml(num_gws=9)
 
 
 if __name__ == "__main__":
