@@ -1,0 +1,23 @@
+# --- Python / OS ---
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+
+# --- Virtual envs ---
+venv/
+.venv/
+env/
+
+# --- Generated data & outputs (runtime artifacts) ---
+data/raw/
+data/processed/
+results/
+models/ml_models/
+
+# --- Large artifacts / models ---
+*.pkl
+*.joblib
+
+# Optional: if you generate large CSVs anywhere else
+*.csv

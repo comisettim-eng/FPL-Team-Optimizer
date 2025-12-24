@@ -1,6 +1,5 @@
-# main.py
 """
-High-level entrypoint for the FPL-Team-Optimizer project.
+Entrypoint for  FPL-Team-Optimizer project.
 
 Pipeline :
   1. Build raw + processed season data (players & gw_history) for 2016-17..2025-26
@@ -212,6 +211,7 @@ def run_pipeline(
     run_training: bool = True,
     run_optimizers: bool = True,
     run_comparison: bool = True,
+    run_reporting: bool = True,
 ):
     t0 = time.time()
     print("\n==============================")
@@ -301,6 +301,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-training", action="store_true", help="Skip training ML models & generating predictions.")
     parser.add_argument("--skip-optimizers", action="store_true", help="Skip season-long LP optimisation.")
     parser.add_argument("--skip-comparison", action="store_true", help="Skip comparing model scores vs FPL average.")
+    parser.add_argument("--skip-reporting", action="store_true", help="Skip generating report tables + figures.")
 
     return parser.parse_args()
 
@@ -313,6 +314,7 @@ def main():
         run_training=not args.skip_training,
         run_optimizers=not args.skip_optimizers,
         run_comparison=not args.skip_comparison,
+        run_reporting=not args.skip_reporting,
     )
 
 

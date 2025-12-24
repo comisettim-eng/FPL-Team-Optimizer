@@ -17,7 +17,7 @@
     <meta name="theme-color" content="#003aff">
     
     <!-- Citation Metadata -->
-    <meta name="citation_title" content="Your Project Title Here">
+    <meta name="citation_title" content="Fantasy Premier League Team Opimizer">
     <meta name="citation_author" content="Scheidegger, Simon">
     <meta name="citation_author" content="Smirnova, Anna">
     <meta name="citation_publication_date" content="2025">
@@ -26,7 +26,7 @@
     <meta name="citation_pdf_url" content="https://ap-unil-2025.github.io/course-materials/assets/course-materials.pdf">
     
     <!-- Dublin Core Metadata -->
-    <meta name="DC.title" content="Your Project Title Here">
+    <meta name="DC.title" content="Fantasy Premier League Team Opimizer">
     <meta name="DC.creator" content="Simon Scheidegger">
     <meta name="DC.creator" content="Anna Smirnova">
     <meta name="DC.subject" content="Data Science">
@@ -86,10 +86,10 @@
     </script>
     
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Fantasy Premier League Team Optimizer | Advanced Programming 2025</title>
+<Fantasy Premier League Team Opimizer>Fantasy Premier League Team Optimizer | Advanced Programming 2025</Advanced Programming 2025>
 <meta name="generator" content="Jekyll v4.3.4" />
-<meta property="og:title" content="Your Project Title Here" />
-<meta name="author" content="Your Name (your.email@unil.ch)" />
+<meta property="og:title" content="YAdvanced Programming 2025" />
+<meta name="author" content="Mattia Comisetti (mattia.comisetti@unil.ch)" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Course materials and resources for Advanced Programming at UNIL" />
 <meta property="og:description" content="Course materials and resources for Advanced Programming at UNIL" />
@@ -399,13 +399,13 @@ A range of methods has been explored for predicting player or team performance i
 
 Describe your dataset(s):
 
-Initially, I tried to get the data from the FPL API. However, the issue with that was that there was no data for the past seasons. In the end, I got the data from the Vaastav Dataset, a A FPL library that has all the basic stats for each player, gw-specific data for each player and season history of each player since the 2016-17 season until the 2025-26 GW9. 
+Initially, the goal was to retrieve the data from the FPL API. However, the issue with that was that there was no data for the past seasons. In the end, I retrieved the data from the Vaastav Dataset, an FPL library that has all the basic stats for each player, gw-specific data for each player and season history of each player since the 2016-17 season until the 2025-26 GW9. 
 
 This results in a database that has around 230708 rows, and approximately 55 columns (can change depending on the year). The Vaastav FPL Dataset consists of tabluar, player-level matchweek data, where each row represents a player's performance in a specific gameweek. The data is structured and heterogeneous: many statistics (e.g xG, BPS, passes, creativity, influence) do not appear before the 2022-23 season. The dataset is imbalanced across players, since star players accumulate consistant gameweek enteries while bench players have sequences of zero-minute rows. Observations follow a quasi-time-series structure, but the temporal spacing is irregular - players may miss due to rotation, injury, or transfers, disrupting continuity. Numerical features such as minutes, total points, goals, and ICT are right-skewed, with many zero values and occasional high outliers. Overall, these charateristics make the dataset more suitable for tree-based models that handle sparsity, missing values, and non linear interactions, rather than models relying on continuous, dense, and uniformmly timed sequences. 
 
 The vaastav FPL dataset contains a rich collection of player and match-level features that describe performance, context, and underlying metrics across Premier league seasons. Core variables include minutes played and total_points, which form the foundation for availability and target prediction, along with key attacking and defensive statistics such as goals scored, assists, and clean sheets. The dataset also records negative events such as goals conceded, yellow/red cards, own goals, and penalties missed, all of which strongly influence point outcomes. More recent seasons (since 2022) additionally provide more advances metrics, including xG, xA, xGI, and xGC that quantify chance quantity and defensive strength. FPL-specific performance indicators such as bonus, bps, ict_index, creativity, influence, and threat capture all-round contributions. Contextual matchup is encoded through team_id, opponent_team, and was_home, while economic and popularity signals are reflected in price, ownership (selected) and transfer activity. Finally, availability descriptors such as starts ans status help model playing time and selection likelyhood. Together, these features create a comprehensive, structured representation of each player's performance and context for every gameweek.
 
-The dataset exhibits several common data-quality challenges that had to be be adressed before modeling. Missing values are frequent, especially for players who did not play in a given gameweek, resulting in zeros or NaNs across performance metrics, advanced statistics, and price information. Newer metrics such as xG, xA, or BPS components only appear since the 2022 season, creating structural missingness across earlier years. Outliers are also very common: explosive performances (e.g hat tricks, double digit hauls), create heavy right skew in point distributions, while unusually low values may occure when players recieve red cards or commit severe errors. Inconsistant data formats, such as variations in was_home, team_id, or stat naming between seasons introduce additional noise that must be normalized. Together, these characteristics require careful cleaning, imputation, and feature engineering to ensure the dataset is consistent and suitable for machine-learning models
+The dataset exhibits several common data-quality challenges that had to be be adressed before modeling. Missing values are frequent, especially for players who did not play in a given gameweek, resulting in zeros or NaNs across performance metrics, advanced statistics, and price information. Newer metrics such as xG, xA, or BPS components only appear since the 2022 season, creating structural missingness across earlier years. Outliers are also very common: explosive performances (e.g hat tricks, double digit hauls), create heavy right skew in point distributions, while unusually low values may occure when players recieve red cards or commit severe errors. Inconsistant data formats, such as variations in was_home, team_id, or stat naming between seasons introduce additional noise that must be normalized. Together, these characteristics require careful cleaning, imputation, and feature engineering to ensure the dataset is consistent and suitable for machine-learning models.
 
 - **Source**: Where did the data come from?
 - **Size**: Number of samples, features
