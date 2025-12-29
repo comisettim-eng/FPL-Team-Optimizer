@@ -70,7 +70,7 @@ VAL_MAX_GW = 9
 # Extra evaluation knobs
 # ---------------------------------------------------------------------
 TOPK_LIST = (11, 15)  # Top-K overlap precision: starting XI and full squad
-HAUL_THRESHOLD = 6    # Optional: classify "haul" if next points >= threshold
+HAUL_THRESHOLD = 6    
 
 
 # ---------------------------------------------------------------------

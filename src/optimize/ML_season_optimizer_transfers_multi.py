@@ -12,7 +12,7 @@ import pulp as pl
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.append(str(PROJECT_ROOT))
 
-# Your existing LP model with prev_squad_ids + transfers_per_gw support
+# existing LP model with prev_squad_ids + transfers_per_gw support
 from src.optimize.LP_team_optimizer_11P import build_team_optimizer
 
 DATA_DIR = PROJECT_ROOT / "data" / "processed"
@@ -36,7 +36,7 @@ PREDICTIONS_TEMPLATE = (
     "player_gw_predictions_{season}_gw1_{max_gw}_{model}.csv"
 )
 
-# Human-readable names for logs
+# Readable names for logs
 MODEL_NAME = {
     "rf": "RandomForest",
     "lgbm": "LightGBM",
@@ -120,7 +120,7 @@ def build_predictions_for_gw(
     Training target = target_next_gw_points (points in NEXT gameweek).
     So a row with gameweek=t in predictions is a prediction for GW t+1.
 
-    We start at GW2, so:
+    Start at GW2, so:
       - For GW2, use rows with gameweek=1
       - For GW3, use rows with gameweek=2
       - ...
@@ -188,7 +188,7 @@ def optimize_season_for_model(
     budget: float = 100.0,
 ) -> Dict[str, pd.DataFrame]:
     """
-    Run the season-long optimisation for a single ML model.
+    Run  season-long optimisation for a single ML model.
 
     - GW2: choose initial squad from scratch using predictions for GW2.
     - GW3..end_gw: exactly 1 transfer per GW (keep 14 of 15 players),

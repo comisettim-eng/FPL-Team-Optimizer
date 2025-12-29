@@ -111,7 +111,7 @@ GW_STAT_COLS = [
     "defensive_contribution",
 ]
 
-# numeric subset we want to coerce explicitly
+# numeric subset - coerce explicitly
 GW_NUMERIC_COLS = [
     "assists",
     "attempted_passes",
@@ -349,7 +349,7 @@ def fetch_gws_stack_for_season(season: str, max_gw: int = 60) -> pd.DataFrame:
         raise RuntimeError(f"[{season}] ERROR: No GW data found at all.")
 
     if season == CURRENT_SEASON:
-        # For 2025-26 we require a full block GW1..9 (repo OR API)
+        # For 2025-26: require a full block GW1..9 (repo OR API)
         expected = set(range(1, 10))  # 1..9
         missing = expected - found_gws
         if missing:
@@ -507,8 +507,8 @@ def build_gw_history_df(
     if "element" in df.columns:
         df.rename(columns={"element": "player_id"}, inplace=True)
     if "id" in df.columns and "player_id" not in df.columns:
-        # in some schemas 'id' is the row id of the GW entry; we prefer element,
-        # but we keep this fallback only if 'element' is not present
+        # in some schemas 'id' is the row id of the GW entry; prefer element,
+        # but keep this fallback only if 'element' is not present
         df.rename(columns={"id": "player_id"}, inplace=True)
 
     df["player_id"] = pd.to_numeric(df["player_id"], errors="coerce").astype("Int64")
@@ -530,7 +530,7 @@ def build_gw_history_df(
 
     df["season"] = season
 
-    # Drop any existing name/position/team columns — we rebuild them from players_raw
+    # Drop any existing name/position/team columns — rebuild them from players_raw
     for col in ["name", "position", "team"]:
         if col in df.columns:
             df.drop(columns=[col], inplace=True)
@@ -591,7 +591,7 @@ def build_gw_history_df(
         "total_points",
     ]
 
-    # extra stat columns we keep if present
+    # extra stat columns kept if present
     stat_cols_present = [c for c in GW_STAT_COLS if c in df.columns]
 
     # avoid duplicates: 'total_points', 'minutes', 'opponent_team', 'value', etc.

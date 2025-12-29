@@ -17,10 +17,10 @@ BACKTEST_DIR.mkdir(parents=True, exist_ok=True)
 
 FPL_API_BASE = "https://fantasy.premierleague.com/api"
 
-# Match your pipeline
+# Match pipeline
 CURRENT_SEASON = "2025-26"
 
-# our three models
+# the three models
 MODELS = ["rf", "lgbm", "xgb"]
 MODEL_NAME = {
     "rf": "RandomForest",
@@ -246,76 +246,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-"""=== Computing scores for GW 2 ===
-  RandomForest: 37.00
-  LightGBM: 48.00
-  XGBoost: 43.00
-  FPL average: 51.00
-
-=== Computing scores for GW 3 ===
-  RandomForest: 69.00
-  LightGBM: 56.00
-  XGBoost: 52.00
-  FPL average: 48.00
-
-=== Computing scores for GW 4 ===
-  RandomForest: 62.00
-  LightGBM: 68.00
-  XGBoost: 68.00
-  FPL average: 63.00
-
-=== Computing scores for GW 5 ===
-  RandomForest: 73.00
-  LightGBM: 49.00
-  XGBoost: 66.00
-  FPL average: 42.00
-
-=== Computing scores for GW 6 ===
-  RandomForest: 59.00
-  LightGBM: 42.00
-  XGBoost: 69.00
-  FPL average: 46.00
-
-=== Computing scores for GW 7 ===
-  RandomForest: 46.00
-  LightGBM: 74.00
-  XGBoost: 58.00
-  FPL average: 60.00
-
-=== Computing scores for GW 8 ===
-  RandomForest: 58.00
-  LightGBM: 47.00
-  XGBoost: 55.00
-  FPL average: 56.00
-
-=== Computing scores for GW 9 ===
-  RandomForest: 38.00
-  LightGBM: 62.00
-  XGBoost: 65.00
-  FPL average: 46.00
-
-=== Computing scores for GW 10 ===
-  RandomForest: 67.00
-  LightGBM: 50.00
-  XGBoost: 50.00
-  FPL average: 65.00
-
-=== Computing scores for GW 11 ===
-  RandomForest: 42.00
-  LightGBM: 35.00
-  XGBoost: 44.00
-  FPL average: 38.00
-
-=== Computing scores for GW 12 ===
-  RandomForest: 36.00
-  LightGBM: 40.00
-  XGBoost: 23.00
-  FPL average: 39.00
-
-=== TOTAL SCORES ===
-RandomForest total: 587.00
-LightGBM total: 571.00
-XGBoost total: 593.00
-FPL average total: 554.00"""

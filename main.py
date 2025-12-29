@@ -38,13 +38,13 @@ from src.evaluate.compare_models_season_scores import compare_models_over_gws
 from src.evaluate.make_report_artifacts import main as make_report_artifacts
 
 # Default config
-MODEL_KEYS = ("rf", "lgbm", "xgb")          # must match short keys in train_compare_models.py
+MODEL_KEYS = ("rf", "lgbm", "xgb")        
 OPTIMIZER_START_GW = 2
 OPTIMIZER_END_GW = 15
 COMPARE_START_GW = 2
 COMPARE_END_GW = 12
 
-# Must match train_compare_models.py validation config
+
 VAL_SEASON = "2025-26"
 VAL_MAX_GW = 9
 
@@ -82,7 +82,6 @@ def build_final_results_summary(
     rank_path = backtests_dir / f"model_ranking_comparison_{val_season}_gw1_{val_max_gw}.csv"
     rank_df = _safe_read_csv(rank_path)
 
-    # If either is missing, we still try to return something reasonable
     # Normalize model names to a stable key for merging with season scores
     model_key_map = {
         "RandomForest": "rf",
@@ -126,7 +125,7 @@ def build_final_results_summary(
     # Merge all
     out = pd.DataFrame({"model_key": ["rf", "lgbm", "xgb"]})
 
-    # Keep only the columns we care about (avoid huge tables)
+    # Keep only the important columns
     reg_keep = [
         "model_key",
         "valid_mae",
@@ -146,11 +145,11 @@ def build_final_results_summary(
 
     out = out.merge(season_totals_df, on="model_key", how="left")
 
-    # Add human-readable model names
+    # Add readable model names
     name_map = {"rf": "RandomForest", "lgbm": "LightGBM", "xgb": "XGBoost"}
     out.insert(0, "Model", out["model_key"].map(name_map).fillna(out["model_key"]))
 
-    # Nicely order + round
+    #Order + round
     preferred_order = [
         "Model",
         "model_key",
@@ -273,7 +272,7 @@ def run_pipeline(
 
 
     # -----------------------------------------------------------------
-    # FINAL: print ONE merged summary table at the very end
+    # FINAL: print 1 merged summary table at the very end
     # -----------------------------------------------------------------
     summary_df = build_final_results_summary(
         project_root=PROJECT_ROOT,
