@@ -12,14 +12,14 @@ import pulp as pl
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.append(str(PROJECT_ROOT))
 
-# Your existing LP model
+#  existing LP model
 from src.optimize.LP_team_optimizer_11P import build_team_optimizer
 
 DATA_DIR = PROJECT_ROOT / "data" / "processed"
 SOLUTIONS_DIR = PROJECT_ROOT / "results" / "ml_solutions_from_training"
 SOLUTIONS_DIR.mkdir(parents=True, exist_ok=True)
 
-# This is the file created by your train_model() script above
+
 PREDICTIONS_CSV = DATA_DIR / "player_gw_predictions_2025_26.csv"
 
 # Current-season players file from fetch_fpl_seasons_gw.py
@@ -74,8 +74,7 @@ def load_predictions_table() -> pd.DataFrame:
     if not PREDICTIONS_CSV.exists():
         raise FileNotFoundError(
             f"Predictions file not found: {PREDICTIONS_CSV}\n"
-            "Run your training script first:\n"
-            "  python -m src.ml.<your_train_module>"
+            "Run  training script first:\n"
         )
 
     df = pd.read_csv(PREDICTIONS_CSV)
@@ -95,10 +94,6 @@ def build_predictions_for_gw(gw: int) -> pd.DataFrame:
     """
     Build a player table for a given gameweek with a 'predicted_points' column,
     ready to be passed into build_team_optimizer.
-
-    We interpret 'predicted_next_points' as the prediction for this gameweek
-    itself (same gameweek index). If you want strict 'next GW' semantics, you
-    can call this with gw-1 instead.
     """
     players = load_players_current_season()
     preds_all = load_predictions_table()

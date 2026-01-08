@@ -39,7 +39,7 @@ def load_players(
     Parameters
     ----------
     min_minutes : int
-        Minimum total minutes played this season to keep a player (=270 -> 3 full games).
+        Minimum total minutes played this season to keep a player (=0)
     only_available : bool
         If True and a 'status' column exists, keep only players with
         status in ['a', 'd', 's'] (available / doubtful / suspended).

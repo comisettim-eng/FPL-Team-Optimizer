@@ -140,7 +140,7 @@ def load_starting_xi(model_key: str, gw: int) -> pd.DataFrame:
 
 
 # ---------------------------------------------------------------------
-# HELPER: compute actual score for a model's team in a GW
+# Compute actual score for a model's team in a GW
 # ---------------------------------------------------------------------
 def compute_model_score_for_gw(model_key: str, gw: int) -> float:
     """

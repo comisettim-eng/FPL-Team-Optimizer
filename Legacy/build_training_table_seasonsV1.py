@@ -5,7 +5,7 @@ Outputs in data/processed:
 - player_gw_features.csv
 - team_gw_features.csv
 - fixture_gw_features.csv
-- player_gw_training.csv  (features only, NO target_next_points)
+- player_gw_training.csv 
 """
 
 import pandas as pd
@@ -71,8 +71,7 @@ def load_gw_history() -> pd.DataFrame:
             "0": False,
         }
         df["was_home"] = df["was_home"].map(mapping)
-        # Optionally, keep as boolean (NaNs stay as NaN)
-        # df["was_home"] = df["was_home"].astype("boolean")
+    
 
     # ------------------------------------------------------------------
     # FIX team_id/team_name for 2020-21..2024-25 using players_clean_all_seasons
@@ -198,7 +197,7 @@ def build_player_gw_features(gw: pd.DataFrame) -> pd.DataFrame:
     feature_cols = [c for c in df.columns if c.startswith("p_")]
     df[feature_cols] = df[feature_cols].fillna(0.0)
 
-    # Deduplicate if needed (sometimes the upstream data has duplicate rows)
+    # Deduplicate if needed
     df = df.drop_duplicates(subset=["season", "gameweek", "player_id"])
 
     return df
@@ -219,7 +218,7 @@ def build_team_gw_features(gw: pd.DataFrame) -> pd.DataFrame:
     """
     df = gw.copy()
 
-    # Drop rows without team_id: they can't contribute to a well-defined team aggregate
+    # Drop rows without team_id
     if "team_id" not in df.columns:
         raise ValueError("gw history must contain 'team_id' to build team features.")
 

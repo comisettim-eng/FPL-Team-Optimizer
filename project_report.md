@@ -1,824 +1,431 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Your Project Title Here | Advanced Programming 2025</title>
-    <meta name="description" content="Course materials and resources for Advanced Programming at UNIL">
-    <link rel="stylesheet" href="/course-materials/assets/css/style.css">
-    <link rel="canonical" href="https://ap-unil-2025.github.io/course-materials/assets/templates/project_report_template_md.txt">
-    
-    <!-- Favicons -->
-    <link rel="icon" type="image/svg+xml" href="/course-materials/favicon.svg">
-    <link rel="icon" type="image/svg+xml" sizes="32x32" href="/course-materials/favicon-32x32.svg">
-    <link rel="apple-touch-icon" href="/course-materials/apple-touch-icon.svg">
-    <link rel="mask-icon" href="/course-materials/favicon.svg" color="#003aff">
-    <meta name="theme-color" content="#003aff">
-    
-    <!-- Citation Metadata -->
-    <meta name="citation_title" content="Fantasy Premier League Team Opimizer">
-    <meta name="citation_author" content="Scheidegger, Simon">
-    <meta name="citation_author" content="Smirnova, Anna">
-    <meta name="citation_publication_date" content="2025">
-    <meta name="citation_journal_title" content="HEC Lausanne Course Materials">
-    <meta name="citation_public_url" content="https://ap-unil-2025.github.io/course-materials/assets/templates/project_report_template_md.txt">
-    <meta name="citation_pdf_url" content="https://ap-unil-2025.github.io/course-materials/assets/course-materials.pdf">
-    
-    <!-- Dublin Core Metadata -->
-    <meta name="DC.title" content="Fantasy Premier League Team Opimizer">
-    <meta name="DC.creator" content="Simon Scheidegger">
-    <meta name="DC.creator" content="Anna Smirnova">
-    <meta name="DC.subject" content="Data Science">
-    <meta name="DC.subject" content="Python Programming">
-    <meta name="DC.subject" content="Machine Learning">
-    <meta name="DC.subject" content="Statistical Learning">
-    <meta name="DC.description" content="Advanced course introducing Python programming, statistical learning, and high-performance computing for Master's students in Economics and Finance">
-    <meta name="DC.publisher" content="HEC Lausanne, University of Lausanne">
-    <meta name="DC.date" content="2025-12-01">
-    <meta name="DC.type" content="Course Materials">
-    <meta name="DC.format" content="text/html">
-    <meta name="DC.identifier" content="https://ap-unil-2025.github.io/course-materials/assets/templates/project_report_template_md.txt">
-    <meta name="DC.language" content="en">
-    <meta name="DC.rights" content="Creative Commons Attribution-ShareAlike 4.0 International License">
-    
-    <!-- Schema.org structured data for Google Scholar -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Course",
-      "name": "Data Science and Advanced Programming 2025",
-      "description": "Advanced course introducing Python programming, statistical learning, and high-performance computing",
-      "provider": {
-        "@type": "Organization",
-        "name": "HEC Lausanne, University of Lausanne",
-        "sameAs": "https://www.unil.ch/hec/"
-      },
-      "instructor": [
-        {
-          "@type": "Person",
-          "name": "Simon Scheidegger",
-          "url": "https://sites.google.com/site/simonscheidegger/"
-        },
-        {
-          "@type": "Person",
-          "name": "Anna Smirnova"
-        }
-      ],
-      "courseCode": "DSAP2025",
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "https://schema.org/OnlineOnly",
-        "startDate": "2025-09-15",
-        "endDate": "2025-12-15",
-        "location": {
-          "@type": "Place",
-          "name": "Internef 263",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Lausanne",
-            "addressCountry": "CH"
-          }
-        }
-      },
-      "license": "https://creativecommons.org/licenses/by-sa/4.0/"
-    }
-    </script>
-    
-    <!-- Begin Jekyll SEO tag v2.8.0 -->
-<Fantasy Premier League Team Opimizer>Fantasy Premier League Team Optimizer | Advanced Programming 2025</Advanced Programming 2025>
-<meta name="generator" content="Jekyll v4.3.4" />
-<meta property="og:title" content="YAdvanced Programming 2025" />
-<meta name="author" content="Mattia Comisetti (mattia.comisetti@unil.ch)" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Course materials and resources for Advanced Programming at UNIL" />
-<meta property="og:description" content="Course materials and resources for Advanced Programming at UNIL" />
-<link rel="canonical" href="https://ap-unil-2025.github.io/course-materials/assets/templates/project_report_template_md.txt" />
-<meta property="og:url" content="https://ap-unil-2025.github.io/course-materials/assets/templates/project_report_template_md.txt" />
-<meta property="og:site_name" content="Advanced Programming 2025" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2025-12-01T00:00:00+00:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Your Project Title Here" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Your Name (your.email@unil.ch)"},"dateModified":"2025-12-01T00:00:00+00:00","datePublished":"2025-12-01T00:00:00+00:00","description":"Course materials and resources for Advanced Programming at UNIL","headline":"Your Project Title Here","mainEntityOfPage":{"@type":"WebPage","@id":"https://ap-unil-2025.github.io/course-materials/assets/templates/project_report_template_md.txt"},"url":"https://ap-unil-2025.github.io/course-materials/assets/templates/project_report_template_md.txt"}</script>
-<!-- End Jekyll SEO tag -->
+% Advanced Programming 2025 - Project Report Template
+% HEC Lausanne / UNIL
+\documentclass[11pt,a4paper]{article}
 
-</head>
-<body>
-    <header class="site-header">
-        <div class="wrapper">
-            <nav class="site-nav" role="navigation" aria-label="Main navigation">
-    <div class="site-branding">
-        <a class="site-title" href="/course-materials/" aria-label="Homepage">
-            <img src="/course-materials/assets/images/unil.jpeg" alt="UNIL Logo" class="site-logo">
-            <span class="site-title-text">DSAP</span>
-        </a>
-        <a href="https://nuvolos.cloud" target="_blank" rel="noopener noreferrer" class="powered-by-header" aria-label="Powered by Nuvolos">
-            <span class="powered-text">Powered by</span>
-            <img src="/course-materials/assets/images/nuvolos_logo.svg" alt="Nuvolos" class="header-nuvolos-logo">
-        </a>
-    </div>
-    
-    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span class="hamburger"></span>
-        <span class="hamburger"></span>
-        <span class="hamburger"></span>
-    </button>
-    
-    <div class="nav-links" id="nav-links">
-        <a href="/course-materials/" >Home</a>
-        <a href="/course-materials/syllabus" >Syllabus</a>
-        <a href="/course-materials/weekly-materials" >Weekly Materials</a>
-        <a href="/course-materials/assignments" >Assignments</a>
-        <a href="/course-materials/projects" >Projects</a>
-        <a href="/course-materials/help-support" >Help & Support</a>
-        <a href="/course-materials/citation" >Cite</a>
-        
-        
-    </div>
-</nav>
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{biblatex}
+\usepackage{listings}
+\usepackage{xcolor}
+\addbibresource{references.bib} % Create this file for your references
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (navToggle && navLinks) {
-        navToggle.addEventListener('click', function() {
-            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-            navToggle.setAttribute('aria-expanded', !isExpanded);
-            navLinks.classList.toggle('active');
-            document.body.classList.toggle('nav-open');
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!navToggle.contains(event.target) && !navLinks.contains(event.target)) {
-                navToggle.setAttribute('aria-expanded', 'false');
-                navLinks.classList.remove('active');
-                document.body.classList.remove('nav-open');
-            }
-        });
-        
-        // Close menu on escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                navToggle.setAttribute('aria-expanded', 'false');
-                navLinks.classList.remove('active');
-                document.body.classList.remove('nav-open');
-            }
-        });
-    }
-});
-</script>
+% Code listing settings
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
-<style>
-/* Make navigation more compact */
-.site-nav {
-    padding: 0.5rem 0;
+\lstdefinestyle{pythonstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    language=Python
 }
 
-.nav-links {
-    gap: 0.75rem;
-    font-size: 0.9rem;
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  columns=fullflexible,
+  keepspaces=true,
+  breaklines=true,
+  frame=none,              % ← no box, no lines
+  backgroundcolor=\color{gray!5},
+  commentstyle=\color{green!50!black}
 }
+\lstset{style=pythonstyle}
 
-.nav-links a {
-    padding: 0.25rem 0.4rem;
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Advanced Programming 2025}
+\lhead{Project Report}
+\rfoot{Page \thepage}
+
+% Title page information - MODIFY THESE
+\title{%
+    \Large \textbf{Advanced Programming 2025} \\
+    \vspace{0.5cm}
+    \LARGE \textbf{Fantasy Premier League Team Optimizer} \\
+    \vspace{0.3cm}
+    \large Final Project Report
 }
-
-.powered-by-header {
-    gap: 0.3rem;
+\author{
+    Mattia Comisetti \\
+    \texttt{mattia.comisetti@unil.ch} \\
+    Student ID: 20437588
 }
+\date{\today}
 
-.powered-text {
-    font-size: 0.75rem;
-}
+\begin{document}
 
-.header-nuvolos-logo {
-    height: 20px;
-}
+\maketitle
+\thispagestyle{empty}
 
-.nav-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    flex-direction: column;
-    gap: 0.25rem;
-    z-index: 1001;
-}
+\begin{abstract}
+\noindent
+Fantasy Premier League (FPL) is a popular online game in which participants select football players under strict budget and squad constraints, with success often attributed to a combination of analysis, intuition, and luck. This project examines whether data-driven machine learning models can systematically outperform average human strategies in FPL decision making. Using a unified, multi-season dataset spanning nine Premier league seasons (2016-17 to 2024-25), three machine learning models (Random Forest, XGBoost, and LightGBM) were trained to predict player points for the subsequent gameweek. These predictions were then integrated into a linear programming optimizer that constructed valid FPL squads, while respecting in-game constraints. 
 
-.hamburger {
-    width: 24px;
-    height: 2px;
-    background-color: var(--text-primary);
-    transition: all 0.3s ease;
-    transform-origin: center;
-}
+Model performance was evaluated at both the point-prediction level using standard regression metrics, and in terms of real-world outcome by comparing the actual FPL points each model scored for a given gameweek to the global FPL manager average. The results indicate that LightGBM consistently outperformed the other models, achieving a lower validation errors, and generating teams that scored considerably better than the average FPL manager. Overall, this study demonstrates that a well-designed machine learning pipeline can meaningfully compete with the average FPL player and could be used to improve FPL decision making. 
 
-.nav-toggle[aria-expanded="true"] .hamburger:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-}
+\end{abstract}
 
-.nav-toggle[aria-expanded="true"] .hamburger:nth-child(2) {
-    opacity: 0;
-}
-
-.nav-toggle[aria-expanded="true"] .hamburger:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-}
-
-.nav-links a.active {
-    color: var(--primary-color);
-    font-weight: 600;
-    background-color: rgba(59, 130, 246, 0.05);
-}
-
-/* Hide the underline pseudo-element completely */
-.nav-links a::after {
-    display: none !important;
-}
-
-.external-links {
-    margin-left: 2rem;
-    padding-left: 2rem;
-    border-left: 1px solid var(--border-color);
-}
-
-.external-icon {
-    font-size: 0.8em;
-    opacity: 0.7;
-    margin-left: 0.25rem;
-}
-
-@media (max-width: 768px) {
-    .site-nav {
-        position: relative;
-    }
-    
-    .nav-toggle {
-        display: flex;
-    }
-    
-    .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: var(--background-color);
-        border: 1px solid var(--border-color);
-        border-top: none;
-        border-radius: 0 0 0.5rem 0.5rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        flex-direction: column;
-        gap: 0;
-        padding: 1rem 0;
-        transform: translateY(-10px);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        z-index: 1000;
-    }
-    
-    .nav-links.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-    }
-    
-    .nav-links a {
-        padding: 0.75rem 1.5rem;
-        display: block;
-        color: var(--text-primary);
-        border-bottom: 1px solid var(--border-color);
-    }
-    
-    .nav-links a:last-child {
-        border-bottom: none;
-    }
-    
-    .nav-links a:hover {
-        background-color: var(--surface-color);
-    }
-    
-    .nav-links a::after {
-        display: none;
-    }
-    
-    .external-links {
-        margin-left: 0;
-        padding-left: 0;
-        border-left: none;
-        border-top: 1px solid var(--border-color);
-        padding-top: 1rem;
-        margin-top: 1rem;
-    }
-    
-    body.nav-open {
-        overflow: hidden;
-    }
-}
-</style>
-        </div>
-    </header>
-
-    <main class="page-content page-transition">
-        <div class="wrapper page-wrapper">
-            
-            
-            <article class="page">
-    <header class="page-header">
-        <h1 class="page-title">Your Project Title Here</h1>
-        
-        <p class="page-subtitle">Advanced Programming 2025 - Final Project Report</p>
-        
-    </header>
-
-    <div class="page-content">
-        # Abstract
-
-Provide a concise summary (150-200 words) of your project including:
-- The problem you're solving
-- Your approach/methodology  
-- Key results/findings
-- Main contributions
-
-**Keywords:** data science, Python, machine learning, [add your keywords]
+\vspace{0.5cm}
+\noindent\textbf{Keywords:} Data Science, Python, Machine Learning, Fantasy Premier League, RandomForest, XGBoost, LightGBM
 
 \newpage
-
-# Table of Contents
-
-1. [Introduction](#introduction)
-2. [Literature Review](#literature-review)
-3. [Methodology](#methodology)
-4. [Results](#results)
-5. [Discussion](#discussion)
-6. [Conclusion](#conclusion)
-7. [References](#references)
-8. [Appendices](#appendices)
-
+\tableofcontents
 \newpage
 
-# 1. Introduction
+% ================== MAIN CONTENT ==================
 
-I have been playing Fantasy Premier League (FPL) with my freinds for many years now. Every year, we each put 30.- into a prize pot, and the winners of the game at the end of the year win it. This is a fun way to watch football while discussing it with freinds, and always results in conversations such as: "how did you know that player would do so well?!", or "You just got lucky", often followed by a "No i didn't, it was obvious that player would do well, just look at the stats". These are conversations that happen all over the world, as there are over 11 million players that play this game every single year (https://fantasy.premierleague.com/entry/642722/history). This whole "statistics" discussion got me thinking how it would be interesting to see the actual impact of statistics on the game, and to what extent one must rely on statistics when making FPL decisions, or if a big part of your final result is the FPL players actual interpretation of the situation, or, is it just dumb luck ? 
+\section{Introduction}
+\label{sec:introduction}
 
-FPL is a game that is based off of the real life Premier League in England. Essentially, if a professional football player does well (scores, assists, plays enough minutes, etc.) in a real life game, his in-game avatar earns points, earning points for the FPL players that "own" him in game. Every FPL player can choose 15 current premier league players at the start of the year. To do so, they have a budget of 100 million. Each player costs more or less depending on his popularity (https://www.premierleague.com/en/news/2858775). Out of these 15 players, only 11 will play. This includes (1 GoalKeeper, min 3 defenders, min 2 midfielders, min 1 forward). 
+Fantasy Premier League (FPL) is a popular fantasy sports game based on the English Premier League, played by over 11 million people every year. Players assemble squads of professional footballers, while respecting a fixed budget, and score points based off the real-world performance of these players in Premier League football games. FPL is a game riddled with different strategies. Some believe that success depends on watching the games and having an intuition or “feeling”, whereas others believe in a more statistical approach, relying on underlying data in order to make squad-building decisions. These discussions motivate a broader question central to sports analytics: to what extent can data-driven methods meaningfully improve decision making in environments characterized by uncertainty and high variance? 
 
-The specific problem this project will solve will be to determine to what extent FPL decisions must be made off of statistics, or if other, more qualitative variables also come into play. The aim of this project is to generate a machine-learning algorithm that learns the patterns of the past 9 seasons, which I found on the Vaastav FPL repository (https://github.com/vaastav/Fantasy-Premier-League), and applies it to the current season. The program will generate a team for the second gameweek, and will be allowed to change one player per week (as a normal FPL player is allowed to do). In order to limit the potential bias linked to chosing a singular model, I will use 3 ML models (XGBoost, RandomForestGenerator and LightGBM) in order to establish which model is able to best predict the best players to use. I will then compare these results with the results of the average FPL players, in order to see if these ML models can do better than the players who mostly base themselves off of qualitative data. 
+In FPL, each manager selects a squad of 15 players within a 100 million budget at the start of the season. Out of these 15 players, 11 are selected to start every week, and will have the opportunity to score points for that Gameweek (GW). There are certain formation constraints regarding the team that can be put forward every week: there can only be one goalkeeper, and there must be a minimum of three defenders, two midfielders, and one forward. Player prices may vary throughout the season according to popularity and perceived performance potential, which is important as managers are allowed to make one transfer per gameweek. As a result, FPL represents a constrained optimization problem in which managers must balance expected performance, budget limitations, team composition rules, as well as future planning. 
 
-This project aims to answer the following research question: which prediction models perform the best for predicting an optimal FPL team: Random Forest, LightGBM, or XGBoost?
+The specific problem addressed in this project is to evaluate the extent to which statistical learning models can outperform average human decision making in FPL. To this end, a machine learning (ML) system is developed that learns patterns from past historical data spanning nine seasons (2016-17 to 2024-25), sourced from the publicly available Vaastav Fantasy Premier League dataset. These patterns are then applied to the ongoing 2025-26 season, in order to predict player performance on a gameweek-by-gameweek basis. Using these predictions, the ML models will construct optimized FPL teams in gameweek two, and will transfer exactly one player every gameweek thereafter, mirroring the constraints faced by real life FPL managers. 
 
-This report will be stuctures in the following way. First, I will go over prior work that has been done to generate FPL predicting programs, their success, as well as the context in which these prediction programs were made. I will then explain the methodology that was used to go write the prediction models in the above program. I will then show the results, teams generated by each ML program, and their real life scores compares to the average FPL player. This will lead to the discussion of the interpretation of these results, as well as the potential limitations of the program. Finally, this report will have a conclusion that summarizes the findings and suggests possible future projects that could be developed from this base. 
+In order to reduce model-specific bias and ensure a fair comparison, three tree based machine learning models are used: Random Forest, LightGBM, and XGBoost. Each model is trained to predict a player’s points in the following gameweek, and is evaluated based off of point-level predictive accuracy, as well as their real-world decision quality, measured by the actual FPL points scored by the optimized teams. The strategies developed are further compared against the global FPL average in order to determine whether data-driven approaches can deliver consistent performance gains over typical human strategies.\\
 
-Introduce your project and its context. This section should include:
+Accordingly, the project seeks to answer the following research question:\\
 
-- **Background and motivation**: Why is this problem important?
-- **Problem statement**: What specific problem are you solving?
-- **Objectives and goals**: What do you aim to achieve?
-- **Report organization**: Brief overview of the report structure
+\textbf{Which prediction models perform best for predicting an optimal Fantasy Premier League team: Random Forest, LightGBM, or XGBoost?}\\
 
-# 2. Literature Review
+The remainder of this report is structured in the following way. Firstly, section 2 will review relevant literature on sports performance prediction and fantasy sport analytics. Then, section 3 will go over the methodology, including the data sources, the feature engineering process, as well as the modeling methodology. Section 4 will then present the empirical results, including predictive performance metrics and season-level performance. Section 5 discusses the implications, limitations, and interpretability of the findings, and, finally, section 6 will conclude the report and include the outline for potential directions for future research.   
 
-Discuss relevant prior work, existing solutions, or theoretical background:
+\section{Literature Review / Related Work}
+\label{sec:literature}
 
-A range of methods has been explored for predicting player or team performance in sports analytics, including traditional statistical models, regression-based machine learning, and more recent deep learning architectures. Commonly used algorithms in related work include Random Forests, logistic regression, gradient boosting models, and various neural networks applied to structured sports data. Publicly available datasets—such as match statistics from official league APIs, aggregated historical performance tables, and open-source repositories of player metrics form the foundation of most studies. However, despite this growing interest, existing literature often lacks a comprehensive multi-model comparison built on a unified, cleaned, multi-season dataset. Many studies focus on a single algorithm or a limited number of features, leaving open the question of which model families are best suited for structured, low-frequency sports data such as FPL. This project addresses that gap by systematically assembling a multi-year dataset and evaluating several modern machine learning models under the same framework, providing clearer insights into which approaches generalize best to real-world FPL prediction tasks.
+Sport analytics is a popular field, and the prediction of player and team performance is a subject that has been widely studied within the field. Approaches range from traditional statistical methods to more advanced ML techniques, and although early work relied on linear and logistic regression models, more recent studies have increasingly adopted machine learning algorithms, including Random Forests, gradient boosting methods, as well as, in some cases, neural networks, to capture non-linear relationships and interactions present in structured sports data.
 
-- Previous approaches to similar problems
-- Relevant algorithms or methodologies
-- Datasets used in related studies
-- Gap in existing work that your project addresses
+The vast majority of these studies are based on publicly available datasets. These datasets typically include match and player-level statistics obtained from official Premier League API’s, aggregated season summaries, and open-source repositories that compile performance metrics across multiple seasons. 
 
-# 3. Methodology
+Although there is already a large amount of research in this area, much of the existing literature focuses on single model approaches and rely on limited feature sets or datasets spanning only one or two seasons. This restricts the model’s ability to assess how well these models generalize in a wide variety of competitive contexts and evolving league dynamics. This is particularly relevant for FPL, where team tactics, player roles, and scoring distributions change considerably over time, and where data availability and feature definitions change across seasons. 
 
-## 3.1 Data Description
+A closely related recent study is the OpenFPL framework, which proposes an open-source approach to forecasting FPL points using ensemble regression models trained on publicly available FPL statistics\textit{(Groos, 2025)}. While this work does demonstrate strong point level predictive performance, its primary focus remains on player-level forecasting accuracy rather than on the decision-making process faced by FPL managers. The present project extends beyond point-level prediction by embedding ML outputs into a constrained optimization process that reflects the actual decision environment faced by FPL managers. The models are then tested on the same historical data and on the same future season, and their success is measured by the total points scored by the team they generate. This makes the evaluation more realistic as it reflects how managers think throughout a season and enables a more effective comparison of statistics versus human intuition. 
 
-Describe your dataset(s):
+Building on these considerations, this project constructs a unified, multi-season dataset and conducts a systematic comparison of three tree-based machine learning models within a consistent experimental framework. By jointly evaluating Random Forest, LightGBM, and XGBoost models using identical data and conditions, as well as assessing both prediction quality and downstream performance, this study offers clearer empirical insights into which model is best suited for structured, low-frequency sports prediction tasks such as FPL. 
 
-Initially, the goal was to retrieve the data from the FPL API. However, the issue with that was that there was no data for the past seasons. In the end, I retrieved the data from the Vaastav Dataset, an FPL library that has all the basic stats for each player, gw-specific data for each player and season history of each player since the 2016-17 season until the 2025-26 GW9. 
+\section{Methodology}
+\label{sec:methodology}
 
-This results in a database that has around 230708 rows, and approximately 55 columns (can change depending on the year). The Vaastav FPL Dataset consists of tabluar, player-level matchweek data, where each row represents a player's performance in a specific gameweek. The data is structured and heterogeneous: many statistics (e.g xG, BPS, passes, creativity, influence) do not appear before the 2022-23 season. The dataset is imbalanced across players, since star players accumulate consistant gameweek enteries while bench players have sequences of zero-minute rows. Observations follow a quasi-time-series structure, but the temporal spacing is irregular - players may miss due to rotation, injury, or transfers, disrupting continuity. Numerical features such as minutes, total points, goals, and ICT are right-skewed, with many zero values and occasional high outliers. Overall, these charateristics make the dataset more suitable for tree-based models that handle sparsity, missing values, and non linear interactions, rather than models relying on continuous, dense, and uniformmly timed sequences. 
+\subsection{Data Description}
+Initially, the objective was to retrieve historical FPL data directly from the official FPL API\textit{(Fantasy Premier League, 2025)}. However, the API only processes the current season, and does not offer historical records of past ones. To overcome this limitation, historical data was retrieved from the Vaastav Fantasy Premier League repository\textit{(FPL API, 2025)}. It is an open source dataset that provides player and gameweek-level FPL statistics for all seasons since the 2016-17 season, up to gameweek 9 of the 2025-26 season at the time of the analysis. 
 
-The vaastav FPL dataset contains a rich collection of player and match-level features that describe performance, context, and underlying metrics across Premier league seasons. Core variables include minutes played and total_points, which form the foundation for availability and target prediction, along with key attacking and defensive statistics such as goals scored, assists, and clean sheets. The dataset also records negative events such as goals conceded, yellow/red cards, own goals, and penalties missed, all of which strongly influence point outcomes. More recent seasons (since 2022) additionally provide more advances metrics, including xG, xA, xGI, and xGC that quantify chance quantity and defensive strength. FPL-specific performance indicators such as bonus, bps, ict_index, creativity, influence, and threat capture all-round contributions. Contextual matchup is encoded through team_id, opponent_team, and was_home, while economic and popularity signals are reflected in price, ownership (selected) and transfer activity. Finally, availability descriptors such as starts ans status help model playing time and selection likelyhood. Together, these features create a comprehensive, structured representation of each player's performance and context for every gameweek.
+The resulting data set contains approximately 230’000 observations and around 55 variables, with slight differences in features depending on the season. Each row corresponds to a player’s performance in a specific gameweek, which produces a structured tabular data set at the player-gameweek level. Difficulties arose due to the heterogeneous nature of the data set. Several advanced performance metrics such as expected goals, bonus points, and further detailed statistics are only available in more recent seasons, particularly from the 2022-23 season onward. This is due not only to the repository, but also to rule changes and the integration of new features in the FPL game. In addition, the dataset is highly imbalanced between players, as regularly starting players accumulate long sequences of gameweek observations, whereas bench players often exhibit runs of zero-minute appearances. 
 
-The dataset exhibits several common data-quality challenges that had to be be adressed before modeling. Missing values are frequent, especially for players who did not play in a given gameweek, resulting in zeros or NaNs across performance metrics, advanced statistics, and price information. Newer metrics such as xG, xA, or BPS components only appear since the 2022 season, creating structural missingness across earlier years. Outliers are also very common: explosive performances (e.g hat tricks, double digit hauls), create heavy right skew in point distributions, while unusually low values may occure when players recieve red cards or commit severe errors. Inconsistant data formats, such as variations in was_home, team_id, or stat naming between seasons introduce additional noise that must be normalized. Together, these characteristics require careful cleaning, imputation, and feature engineering to ensure the dataset is consistent and suitable for machine-learning models.
+Although the observations do follow a temporal order within each season, the dataset does not constitute a regular time series. Players miss gameweeks due to injuries, rotation, suspension, or transfers, which leads to irregular temporal spacing. Furthermore, many numerical variables, such as minutes played, total points, goals scored, and ICT-based metrics show a strong right skewness, with a large mass at zero and occasional extreme outliers due to exceptional performances. The data set is particularly well-suited to tree-based ML models due to these characteristics, as they are robust to sparsity, missing values, and nonlinear interactions and less reliant on evenly spaced temporal sequences. 
 
-- **Source**: Where did the data come from?
-- **Size**: Number of samples, features
-- **Characteristics**: Type of data, distribution
-- **Features**: Description of important variables
-- **Data quality**: Missing values, outliers, etc.
+The Vaastav FPL dataset contains a wide range of player and match-level statistics that describe performance, context, and underlying contributions. Certain core variables include minutes played and total\_points, which serve as the basis for both availability modeling as well as target construction. Attacking and defensive statistics such as goals scored, assists, clean sheets, goals conceded, and saves are complemented by negative scoring events, including yellow and red cards, own goals, and penalties missed. As stated above, more recent seasons also include more advanced metrics such as expected goals (xG), expected assists (xA), expected goal involvements (xGI), and expected goals conceded (xGC), which provide deeper insight into chance quality and defensive strength. These are complemented with FPL-specific statistics such as bonus points, ICT index, creativity, threat and influence. These statistics capture broader contributions beyond raw scoring events, which can be useful when trying to predict future points. Contextual information is also included, and include variables such as team and opponent identifiers, as well as home-away indicators. Economic and popularity signals are reflected in the player price, ownership rates, and transfer activity, and can give the model a small insight into more qualitative information. Finally, availability descriptors such as starting and player injury status help model playing time uncertainty. Together, these features provide a comprehensive statistical representation of each player’s performance, and context for every gameweek. 
 
-## 3.2 Approach
+Quite a few data quality challenges had to be addressed prior to modeling. As missing values are frequent, notably for players who did not feature in each gameweek, there are several zeros or missing entries across many performance variables. There is also the issue of structural missingness, as advanced metrics are unavailable for earlier seasons. Outliers are also common, driven by exceptional performances and adverse events such as red cards. Furthermore, inconsistencies in variable naming, data formats, and identifier encodings across seasons required careful normalization. All of these features call for systematic cleaning, schema harmonization, and feature engineering to ensure consistency and suitability for machine learning analysis. 
 
-Detail your technical approach:
-For this project, I used three tree-based machine-learning algorithms; RandomForest, LightGBM, and XGBoost, because they perform exceptionally well on tabular, sparse, and feature-engineered sports datasets, and are more robust tahn deep sequential models for FPL prediction. The preprocessing pipeline included unifying historical schemas, handling missing values, and generating player, team and fixture-level features. The model architechture follows a standard supervised learning setup where each sample represents a (player, season, gameweek) instance enriched with engineered predictors, and the target variable is the player's points in the following gameweek. Model evaluation relies on widely accepted regression metrics: Mean Absolute Error (MSE), and Root Mean Squared Error (RMSE) to measure predictive accuracy, with a dedicated validation window (GW1-9 of the 2025-26 season) to ensure fair and forward-looking assessment of performance.
-- **Algorithms**: Which methods did you use and why?
-- **Preprocessing**: Data cleaning and transformation steps
-- **Model architecture**: If using ML/DL, describe the model
-- **Evaluation metrics**: How do you measure success?
 
-## 3.3 Implementation
+\subsection{Approach}
+This project employs three tree-based machine learning models: Random Forest, XGBoost, and LightGBM. These models were selected due to their strong empirical performance on structured, tabular datasets, as well as their ability to capture complex nonlinear relationships without requiring dense or regularly spaced time-series inputs\textit{(Grinsztajn et al., 2022)}. When comparing to deep learning approaches, tree-based methods are more robust in settings characterized by sparse observations, relatively low temporal resolution, and heterogeneous feature availability, which are all defining properties of FPL data. 
 
-Discuss the implementation details:
+The modeling framework follows a supervised learning setup in which each observation corresponds to a (player, season, gameweek) tuple enriched with engineering features. The target variable is defined as the player’s total FPL points in the following gameweek, requiring a forward-looking prediction consistent with real-world decision making. Feature engineering includes rolling historical aggregates at the player and team level, contextual indicators such as home advantage and opponent strength estimates, and cumulative season statistics, computed purely from past information to avoid data leakage. 
 
-The project is implemented entirely in Python, using a stack of scientific and ML libraries; pandas and numpy for data manipulation, scikit-learn for the RandomForest baseline and evaluation metrics, lightgbm and xgboost for gradient-boosted trees, and pulp for linear programming squad optimizer; additional utilities such as requests (FPL API calls), joblib (model persistence), and matplotlib/seaborn (optional visualisation) support the pipeline. Architecturally, the system is split into modular scripts: data ingestion and cleaning (fetch_fpl_season_gw.py) is used to build unified player and gameweek level tables across seasons. Feature engineering was then used in the  build_training_table_seasons.py script and constructs ML ready, player-GW feature matrices; model training and comparison (train_compare_models.py) fit the three models and generate per-player prediction files; optimisation (ML_season_optimizer_transfers_multi.py) consumes those predictions to build season-long FPL squads under budget, formation and transfer constraints; finally, evaluation against reality (compare_models_season_scores.py) pulls actual FPL points via the API to benchmark each model's strategy over multiple gameweeks. Key code components include functions like fetch_gws_stack_for_season / build_gw_history_ds (robust schema-normalised data loading), build_player_gw_features and build_fixture_gw_features (rolling and opponent-aware features), add_next_gw_target and prepare_features (target construction and feature selection), train_and_evaluate_model (training + MAE / RMSE reporting per model), optimize_season_for_model (multi-GW optimization with transfer tracking), and compare_models_over_gws (end-to-end performance comparison vs the global FPL average).
+The evaluation of the models relied on standard regression metrics, notably Mean Absolute Error (MAE) and Root Mean Squared Error, which quantify point-level predictive accuracy, as well as the coefficient of determination ($R^2$), which measures the proportion of the variance in the next-gameweek points explained by the model. A temporarily held out validation window, which consists of gameweeks 1-9 of the 2025-26 season is used to ensure a realistic, forward-looking assessment.
 
-- **Languages and libraries**: Python packages used
-- **System architecture**: How components fit together
-- **Key code components**: Important functions/classes
 
-Example code snippet:
+\subsection{Implementation}
+The entire pipeline is implemented in Python, using a modular architecture built with widely used scientific and ML libraries. Data manipulation and preprocessing are handled with Pandas and Numpy. Model training and evaluation rely on scikit-learn for the Random Forest baseline, and on the LightGBM and XGBoost libraries for the gradient-boosted tree models. Squad optimization is formulated as a linear programming problem and solved using the PuLP optimization framework. Further utilities include requests for API access, joblib for model persistence, and matplotlib for result visualization.
 
-```python
-def preprocess_data(df):
-    """
-    Preprocess the input dataframe.
-    
-    Args:
-        df: Input pandas DataFrame
-    
-    Returns:
-        Preprocessed DataFrame
-    """
-    # Remove missing values
-    df = df.dropna()
-    
-    # Normalize numerical features
-    scaler = StandardScaler()
-    df[numerical_cols] = scaler.fit_transform(df[numerical_cols])
-    
-    return df
-```
+The pipeline is organized into a sequence of scripts, each representing a distinct stage in the workflow. Historical data is ingested and handled by a dedicated script that builds unified player and gameweek level tables across all the seasons. Feature engineering is performed in a separate model that constructs ML-ready player-gameweek feature matrices. The models are then trained and compared in a standalone training script that fits all models, generates predictions for each player, and evaluates their separate predictive performance. These predictions are then consumed by an optimization module that constructs FPL squads across multiple gameweeks, while respecting all the constraints. Finally, an evaluation module retrieves the actual FPL results via the official FPL API and compares the realized performance of each model’s strategy against the global FPL average. A final script then creates figures and tables of the results.
 
-# 4. Results
+The implementation is organized into modular components that cover data preparation, feature engineering, model training, optimization, and evaluation. Player and match data are initially standardized across seasons, after which rolling player and team features are constructed and used to train predictive models. The resulting predictions are integrated into an optimization process that respects FPL constraints. This structure allows the entire pipeline to remain transparent, reproducible, and easy to extend.
 
-## 4.1 Experimental Setup
 
-Describe your experimental environment:
+\section{Results}
+\label{sec:results}
 
-All experiments were conducted using the online Visual Studio Code environment, which ran online, in the cloud-hosted CPU environment. This meant there was no GPU accelleration. This setup provided standard multi-core CPU performance, which was sufficient for training tree-based models such as RandomForest, LightGBM, and XGBoost, as these algorithms do not require specialised hardware. The software environment uses Python 3.11, with key libraries including pandas(2.3.3), numpy(2.3.4), scikit-learn(1.7.2), lightgbm(4.6.0), xgboost(3.1.2) and pulp(3.3.0). Hyperparameters were chosen to balance model accuracy with computational efficiency: RandomForest used 400 trees and min_sample_leaf=5, LightGBM used 500 boosting rounds with a learning rate of 0.05 and 31 leaves, and XGBoost used 500 estimators with a learning rate of 0.05 and a maximum depth of 8. Since tree-based models train quickly on tabular data, no batch size or epoch scheduling was required. Instead of deep-learning loops, evaluation followed a temporal hold-out design: all seasons up to 2024-25 were used for training, while the 2025-26 season (gameweeks 1-9) served as the validation window. Model performance was measured using Mean Absolute Error and Root Mean Squared Error, providing robust, leakage free comparison across models in a time-dependent prediction setting. 
+\subsection{Experimental Setup}
+The entire project was carried out in the cloud-based Visual Studio Code environment using standard multi-core CPU resources, without GPU acceleration. This setup was well-suited to the tree-based models used in this study, which do not rely on specialized hardware. The project was conducted entirely in Python 3.11, with hyperparameters selected with the goal of balancing predictive performance and computational efficiency. The Random Forest model was trained using 400 trees with a minimum leaf size of 5 observations, while XGBoost and LightGBM used 500 boosting iterations with a learning rate of 0.05, with LightGBM limited to 31 leaves and XGBoost to a maximum tree depth of eight. Hyperparameters were chosen to reflect standard, well-performing configurations for each model family rather than enforcing identical parameter counts. This is because tree counts and boosting iterations are not directly comparable across Random Forest and gradient boosting methods. The rest of the configuration remained the same across models to allow fair comparison, except for the n\_jobs parameter. For Random Forest, this was set to -1 to reduce training time, as this model exhibits limited sensitivity to parallelism\textit{(Haval & Zeebaree, 2024)}. For the other two models, n\_jobs was set to 1 to improve reproducibility, as these models do not take as long to train.
 
-- **Hardware**: CPU/GPU specifications
-- **Software**: Python version, key library versions
-- **Hyperparameters**: Learning rate, batch size, etc.
-- **Training details**: Number of epochs, cross-validation
+\subsection{Performance Evaluation}
+\subsubsection{Predictive performance on the validation set}
+This section evaluates the performance of the three proposed ML models in forecasting FPL points for the next gameweek. As discussed above in the methodology, each model was trained on the historical player-gameweek data extracted from the seasons 2016-17 to 2024-25, and then evaluated on a temporarily held out validation set made up of the first nine gameweeks in the 2025-26 season. All data splits were performed in a chronological order, to avoid data leakage and to ensure the model reflects a realistic forecasting scenario faced by FPL managers. 
 
-## 4.2 Performance Evaluation
+Model performance is assessed using three complementary regression-based metrics, each offering a distinct perspective on predictive accuracy. Mean Absolute Error (MAE) captures the average magnitude of prediction errors, while Root Mean Squared Error (RMSE) places greater emphasis on large deviations, thereby penalizing extreme mispredictions more. $R^2$ measures the proportion of variance in next gameweek points explained by the model. Together, these metrics provide a robust assessment of point-level forecasting performance. In addition, ranking and decision-oriented evaluations are considered later in the analysis, as the accurate identification of high-performing players is ultimately more relevant for FPL decision-making than exact point prediction alone.
 
-This section will now evaluate the performance of the proposed machine learning models for forecasting the next gameweek's FPL points. As stated above, the models were all trained on historical player-gameweek data from the 2016-17 season until the 2024-25 season. It was then evaluated on a temporally held out validation set consisting of the first 9 gameweeks of the 2025-26 seasons. All splits are performed chronologically in order to avoid information leakage and reflect a realistic forecasting scenario. 
+Due to the stochastic nature of tree-based ensemble models and potential nondeterminism in parrallel computation, numerical results may vary slightly across runs and environments\textit{(Hastie et al., 2009)}. This is why all the results reported are averaged over 10 runs.
 
-The models performance is assessed using regression-based metrics, such as Mean Absolute Error (MSE), Root Mean Squared Error (RMSE) as well as the coefficient of determination (R^2), which quantify point-level prediction accuracy. The evaluation also incorporates ranking and decision oriented measures that are particularily relevant for FPL team selection, as the goal is not only to predict exact scores but also to correctly identify high performing players. The following table summarizes the comparative performance of each model on the validation set.
+\begin{table}[H]
+\centering
+\caption{Average point level predictive performance on the validation set}
+\label{tab:performance}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Model} & \textbf{Valid\_MAE} & \textbf{Valid\_RMSE} & \textbf{Valid\_$R^2$} & \textbf{Spearman\_Rho}\\
+\hline
+RandomForest & 1.363 & 2.077 & 0.253 & 0.724 \\
+XGBoost & 1.171 & 2.085 & 0.247 & 0.717\\
+LightGBM & 1.126 & 2.028 & 0.288 & 0.728\\
+\hline
+\end{tabular}
+\end{table}
+Clear differences in predictive performance emerge across the three models. LightGBM consistently outperforms both RandomForest and XGBoost on all reported metrics,  achieving the lowest MAE and RMSE as well as the highest $R^2$ and Spearman Rho value. A validation MAE of 1.126 indicates that, on average, the LightGBM model’s predictions deviate from the actual next gameweek FPL points by slightly more than one point per player, which is notable given the inherent randomness and volatility of football outcomes. XGBoost exhibits weaker performances than LightGBM, with a higher MAE (1.171), and also underperforms Random Forest in terms of $R^2$, and RMSE. While LightGMB achieves superior point-level predictive accuracy, all three models exhibit comparable ranking performance, as reflected by similar Spearman correlation coefficients (ranging from 0,719 to 0,729). This suggests that improvements in absolute prediction accuracy do not necessarily translate into substantially better player ranking, which may have implications for downstream FPL-decision making. However, strong performance alone is not sufficient to assess model reliability, it is also essential to examine whether these performance differences arise from genuine generalization or from overfitting to the training data. 
 
+To further assess this overfitting, the difference between training and validation MAE was examined for each model. Overfitting occurs when a model learns noise or dataset-specific patterns that fail to generalize to unseen data. Larger gaps between training and validation errors indicate a higher risk of overfitting. The figure below visualizes this comparison between models. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{trainVSvalidMAE.png}
+    \caption{Average Train vs Valid MAE (Overfitting check)}
+    \label{fig:trainVSvalidMAE}
+\end{figure}
 
- model | valid_mae | valid_rmse | valid_r2 |
-| --- | --- | --- | --- |
+LightGBM exhibits the lowest gap between training and validation MAE, indicating strong generalization and limited overfitting. XGBoost shows a moderate discrepancy, suggesting some degree of overfitting. In contrast, Random Forest displays a large gap, with very low training error but substantially higher validation error, consistent with pronounced overfitting and weaker generalization performance.
 
-| LightGBM | 1.138 | 2.115 | 0.228 |
-| RandomForest | 1.356 | 2.447 | -0.033 |
-| XGBoost | 1.420 | 2.496 | -0.075 |
+Overall, these results identify LightGBM as the most reliable model for point-level FPL prediction under a realistic temporal validation setup. The gradient boosting framework it uses appears particularly effective at capturing non-linear relationships and feature interactions in structured, sparse FPL data, while maintaining a strong generalization performance. 
 
-*Table 1 Point level predictive performance on the validation set (GW1-GW9 of the 2025-26 season)*
+\subsubsection{Decision Performance at the Season Level}
+As important as point-level prediction accuracy may be, the objective of this project is to assess to what extent improved predictions translate into improved FPL decision making. To evaluate this, each model’s predictions were used in an optimization framework that generates weekly FPL teams under realistic game constraints, including budget limits, squad composition rules, and restricted transfers. This resulted in each model generating a 15-man squad at the start of the year (in gameweek two) and selecting 11 players every week to score points, while being allowed to transfer in and out one player per week. The generated teams were evaluated using the actual FPL points the team would have scored in that gameweek, obtained from the official FPL API.
 
-From this table, one can see meaningful differences in predeictive performance across the three models. LightGBM clearly outperforms Random Forest and XGBoost on all reported metrics, achieving the lowest MAE and RMSE, as well as the highest R^2 coefficient. A validation MAE of 1.128 means that, on average, the LightGBM model was off from the actual next gameweek FPL points by slightly more than one point per player, which is relatively strong given the high variability inherent in football outcomes. 
+Table~\ref{tab:season_performance} reports the total and average points scored by each model’s optimized team between the gameweeks 2 and 12 of the 2025-26 season, which are then compared to the global FPL average over the same period. The evaluation covers gameweeks 2 to 12 as predictions can only be generated from gameweek 2 onward, and extending further would risk forecasting too far ahead without incorporating newly observed information. 
 
-On the other hand, RandomForest and XGBoost exhibit higher error levels and a negative R^2. A negative R^2 suggests that these models perform worse than a naive baseline that predicts the mean target variable for all observations. This suggests that, in the early-season validation window, both models struggle to generalize effectively from historical data, potentially due to reduced robustness to early-season dynamics such as player transfers, role changes, and team tactical developemnts, or potentially even due to overfitting to past season patterns. 
+\begin{table}[H]
+\centering
+\caption{Average season-level performance of optimized teams compared to the FPL average (GW2--GW12, 2025--26)}
+\label{tab:season_performance}
 
-Overfitting is an issue that arises when the model learns the training data too well, inclusding the training data's noise and random fluctuations, which it then tries to apply to the new data, unsuccessfully. In mathematical terms, the higher the difference between the Train MAE and the Valid MAE, the higher the risk of overfitting. This can be visualized for every model in the following figure:
+\begin{tabularx}{\textwidth}{l c >{\centering\arraybackslash}X c c}
+\toprule
+\midrule
+\bottomrule
+\textbf{Model} &
+\textbf{Total Points} &
+\textbf{Avg Points per Gameweek} &
+\textbf{Delta vs FPL Avg} &
+\textbf{Num Gameweeks} \\
+\hline
+RandomForest & 576.000 & 52.364 & 22.000 & 11 \\
+XGBoost      & 600.250 & 54.568 & 46.250 & 11 \\
+LightGBM     & 621.000 & 56.455 &  67.000 & 11 \\
+FPL Average & 554.000 & 50.364 &   0.000 & 11 \\
+\hline
+\end{tabularx}
+\end{table}
+The results remain in line with the validation results, as the LightGBM model substantially outperforms the two other models as well as the global FPL average. Over the 11 gameweek evaluation window, the team generated by the LightGBM model scored on average 621 points, 67 more than the average FPL manager. The Random Forest and XGBoost teams also outperform the FPL average, albeit by a smaller margin. These results highlight the fact that small improvements in predictive accuracy can drastically impact downstream decision quality.
 
-*Figure 2: train vs valid MAE*
+These differences are further illustrated in Figure~\ref{fig:cumulative_points}, which plots cumulative team points over time per model.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Points_Over_time.png}
+    \caption{Model Cumulative Points Over Time}
+    \label{fig:cumulative_points}
+\end{figure}
 
-Overall, these results highlight LightGBM as the most reliable model for point level prediction in this setting. The superior performance of LightGBM may be attributed to its gradient boosting framework, which is effective in capturing non-linear relationships and interactions in structured tabular data, while maintaining strong generalization under temporal validation constraints. This higher performance can also be seen by the actual resuts of the teams generated by each model: 
+One can observe a consistent and widening performance gap between the LightGBM model and the other approaches. Rather than benefiting from a few isolated high-scoring weeks, it seems that the LightGBM strategy is consistently able to outperform the other models, suggesting that its superior performance is driven by a sustained superior decision quality rather than short-term variance or luck. This relative consistency is a valuable asset in FPL, where sustained performance across gameweeks is more impactful for long-term success than isolated high-scoring weeks.
 
-| model | total_points | avg_points_per_gw | delta_total_vs_fpl_avg | num_gameweeks |
-| --- | --- | --- | --- | --- |
+\section{Discussion}
+\label{sec:discussion}
 
-| lgbm | 628.000 | 57.091 | 74.000 | 11.000 |
-| rf | 534.000 | 48.545 | -20.000 | 11.000 |
-| xgb | 516.000 | 46.909 | -38.000 | 11.000 |
-| fpl_average | 554.000 | 50.364 | 0.000 | 11.000 |
+\subsection{What Worked Well}
+One of the most important findings of this project is that the three models outperformed the average FPL manager over the evaluated gameweeks. This result is particularly impressive as the models operated under stricter constraints than a human FPL manager. For instance, they did not use special FPL chips, such as Triple Captain, Free hit, or Bench Boost, nor were they able to directly incorporate qualitative data such as injury reports, tactical speculation, or information gained from press conferences. Although some of these qualitative aspects could be somewhat integrated into the model through the previous weeks “transfer in” and “transfer out” statistics, which specified if FPL managers transferred a player in or out of their squad, the model relied almost exclusively on structured historical data. Despite these limitations, the LightGBM, XGBoost and Random Forest models achieved a significantly higher score than the average FPL player, which shows that a purely data driven approach can produce a competitive decision-making performance.
 
-*Table 2: Season level performance of optimized teams compared to the FPL Average (GW2-GW12, 2025-26)*
+There were several methodological choices that contributed to this success. First, training the models on a large, unified dataset spanning nine seasons allowed them to learn stable performance patterns across a wide range of player roles, team dynamics and competitive contexts. Secondly, using rolling and lagged features ensured that each prediction was based purely on the information available prior to that gameweek prevented data leakage and improved temporal generalization. The rolling feature also reduced the model's bias toward the single previous game performance, which would have led it to selecting the best player over the past gameweek every time. Finally, embedding the ML predictions into a linear programming framework proved effective in translating point level forecasts into realistic squad selection decisions. This optimization step enforced the rules of the FPL game onto the ML models, which enabled the evaluation to reflect the actual decision environment faced by FPL players, rather than focusing only on an isolated prediction accuracy. 
 
-Once again, the LightGBM model substantially outperforms both models, as well as the FPL global average, having achieved 628 points over 11 gameweeks, 74 more than the average FPL manager during that same period. In contrast, the RandomForest and LightGbm models underperform the FPL average, indicating that their weaker predictive accuracy translates directly into poorer decision making outcomes. 
+\subsection{Challenges Encountered}
+A major challenge throughout this project was the heterogeneity and incompleteness of the historical FPL dataset. The available features evolved considerably over time, with important variables such as expected goals (xG) and expected assists (xA) only being available from the 2022-23 season onward. This resulted in structural missingness, that unfortunately could not be resolved through simple imputation without introducing bias or artificial signal. To mitigate this issue, the feature engineering process prioritized robust variables that were consistently available across all seasons, while selectively incorporating more advanced features such as xG and xA only when they were present. Rather than backfilling or imputing these statistics for earlier seasons, the pipeline allowed the models to exploit the richer feature sets available in the more recent data, leveraging the ability of tree-based algorithms to handle missing values and heterogeneous feature availability naturally. A further issue related to the inherent structure of the database was ensuring consistent player and team identifiers across seasons. This required careful normalization and cross referencing, especially in more recent seasons where schema inconsistencies and naming changes were more frequent. 
 
-This same result can be seen more evidently on the following figure, which compares the three models cumulative points over time, compared to the FPL average from gameweek 2 to 12 of the 2025-26 season. 
+A second major challenge came from the temporal structure of the data. Player participation in the Premier League is inherently irregular. Injuries, substitutions, suspensions, or transfers are all reasons a player may miss a gameweek, resulting in discontinuous observation sequences. This irregularity makes the data difficult to handle for traditional sequence based or time-series models that assume evenly spaced observations. To address this issue, the modeling framework treated each player-gameweek observation as an independent supervised learning instance, enriched with rolling and lagged features, rather than relying on sequential architecture.
 
-*Figure 3 - cumulative points*
+From a data engineering perspective, managing an end-to-end pipeline which covered data ingestion, feature engineering, model training, optimization, and evaluation also posed significant challenges. Without careful design, any errors introduced at the early stages could easily be propagated into later components. This risk was mitigated through a modular codebase that clearly separated responsibilities into different sections, and a single executable entry point (main.py), which ensured reproducibility, simplified debugging, and allowed individual components to be tested and refined independently.
 
-This figure highlights clear performance differences across models. More importantly, one can see that the LightGBM model model consistently outperforms the other models, slowly gowing the gap between its number of points and the number of points made by the other models, as well as the FPL average. This shows that the model consistently makes better decisions than the other models, and did not just get "lucky" with a excellent gameweeks. 
 
-The following figure examins the weekly FPL scores of each model in more detail. This visualization highlights the variability inherent in weekly football outcomes and provides a more granular view of model performance.
+\subsection{Comparison VS Initial Expectations}
+The initial expectation of this project was that the gradient boosting models (LightGBM and XGBoost) would outperform the Random Forest model in predicting the next gameweek points per player, and hence, generate higher scoring teams. The results partly support this hypothesis. LightGBM consistently outperforms Random Forest across both predictive and downstream decision making metrics, achieving the lowest validation error, strongest generalization performance, and the highest cumulative team score compared to the FPL average. However, XGBoost shows mixed performance relative to Random Forest, improving point-level accuracy as measured by MAE, but failing to deliver consistent gains across other metrics such as RMSE and $R^2$. This may be due to XGBoost’s sequential boosting framework, which can amplify early model errors, particularly in noisy and non-stationary environments such as FPL data.
 
-*Figure 4 - weekly points*
+The magnitude of the performance gaps is also noteworthy. Random Forest and XGBoost exhibited strong training performance, yet failed to generalize effectively during the early-season validation window, as reflected by the lower scoring season outcomes. This divergence suggests that not all tree-based models adapt equally well to rapidly shifting contexts, and highlights the fact that LightGBM appears better suited to capturing these dynamics, which resulted in more robust generalization and superior decision-making quality. 
 
-While all strategies exhibit subtsantial week-to-week variation, the LightGBM model seems to be able to capitalize on gameweeks where most models perform well, and limit the losses in the weeks that most models perform badly. This suggests the LightGBM model doesn't only identify high scoring players, but also offers more robust predictions that reduce downside risk in team selection. This is very important in FPL, as it is often players who manage to score well regularily that have the most points at the end of the season. 
 
+\subsection{Limitations}
+Despite its strengths, the proposed approach had several important limitations. Firstly, the predictive framework only forecasts player points for the following gameweek and does not explicitly plan over longer horizons by accounting for fixture difficulty across multiple upcoming weeks. Furthermore, the optimization component does not model chip usage (triple captain or free hit) effectively, which limits its capabilities to imitate optimal FPL strategies over a full season. 
 
-## 4.3 Visualizations
+The model also relies exclusively on historical numerical data, and therefore ignores qualitative information such as injury news or suspensions, factors which often play a crucial role in real-world outcomes. The evaluation window is relatively short (GW1-GW9), meaning that results may be influenced by early-season volatility and may not yet fully reflect long-term performance trends. 
 
-Include relevant plots and figures:
+Finally, even though LightGBM achieved the strongest results in the study, they are difficulty generalizable. Its performance depends on a specific feature set, hyperparameter choices, and validation period. As such, these findings should not be interpreted as universally optimal across all sports, seasons or league contexts.
 
-- Learning curves (MAYBE)
-- Confusion matrices
-- Feature importance plots
-- Results visualizations
+\subsection{Surprising Findings}
+One of the more unexpected findings was the weaker performance of XGBoost. Despite its reputation for tabular prediction tasks, it did not manage to consistently outperform Random Forest in terms of prediction level statistics, showed a significant level of overfitting, and therefore performed considerably worse than LightGBM. This highlights that model effectiveness does not only depend on algorithmic strength, but also it's alignment with the data structure and feature engineering. Moreover, small differences in point-level prediction accuracy led to substantial differences in season-level performance, underscoring the importance of evaluating models in terms of real-world decision outcomes rather than predictive measures alone. 
 
-![Example Results](path/to/figure.png)
-*Figure 1: Description of your results*
+\section{Conclusion and Future Work}
+\label{sec:conclusion}
 
-# 5. Discussion
+\subsection{Summary}
+This project aimed to investigate the extent to which statistical modeling and machine learning can be effective when it comes to decision making in FPL, a game often perceived as a balance between analysis, intuition, and chance. By assembling a large, multi-season dataset, this study developed a fully reproducible end-to-end pipeline for player-level point prediction, squad optimization, and real-world performance evaluation.
 
-This section discusses the implications of the results, evaluates the strengths and weaknesses of the approach, and reflects how the findings relate to the initial research question
+Three tree-based ML models (Random Forest, XGBoost, and LightGBM) were trained to predict next gameweek FPL points using rolling player and team level features. These predictions were integrated into a linear programming optimizer that constructed valid FPL squads under realistic in-game constraints. Model performance was then evaluated both through standard regression metrics on a temporarily held out validation window and through the actual FPL points scored by the optimized teams, benchmarked against the global FPL average score. 
 
-Analyze and interpret your results:
+The results clearly indicate that LightGBM outperformed both Random Forest and XGBoost in this setting. LightGBM achieved the lowest validation error, and generated teams that consistently outperformed the two other models, as well as the global FPL average. In contrast, the weaker generalization performance of Random Forest and XGBoost translated directly into inferior team scores, highlighting the importance of robust predictive accuracy when models are imbedded in downstream decision-making systems. Overall, these findings demonstrate that certain statistical models can significantly outperform average human-making decision in FPL, even without access to qualitative information or in-game advantages such as chips. 
 
-**5.1 What Worked Well**
 
-One of the most notable successes of this project is that the LightGBM-based strategy was able to consistently outperform the average FPL player score over the evaluated gameweeks. This result is even more meaningful given that the model operated under stricter conditions that a typical human FPL manager: it did not use special chips such as Triple Captain, Free Hit, or Bench Boost, nor did it interpret qualitative information such as injury news, press conferences, or tactical speculations, even though it could slightly infer this information from the "Transfers in" and "Transfers out" statistics. Despite these limitations, the model still achieved a cumulative score substantially higher than the average FPL manager, demonstrating that a purely data driven approach can yield competitive decision making performance. 
+\subsection{Future Directions}
+While the results are encouraging, several extensions could improve both predictive accuracy and practical relevance. One improvement could be to explicitly model all the special FPL mechanics such as Free hit, Bench Boost, etc., which were intentionally excluded in this model to avoid inflating early-season performance. Incorporating these elements in a full-season simulation would allow the framework to reflect real FPL gameplay more closely. Furthermore, enriching the feature set with qualitative data such as injury reports could further enhance predictive accuracy. 
+
+Methodically, future work could also focus on probabilistic forecasting instead of point estimates. Using Bayesian or quantile-based models would allow the optimizer to account for uncertainty and downside risk, enabling it to distinguish between high variance players and more consistent, reliable ones. Another promising direction is long term planning, where squad decisions are optimized based on expected performance over multiple upcoming gameweeks. 
 
-Several elements of the methodology contributed to this success. Firstly, making the model train on a large multi-season dataset (Spanning nine full Premier league seasons) allowed the models to learn stable performance patterns across a wide range of contexts, teams and player roles. Secondly, the use of rolling, lagged features ensures the predictions were based exclusively on past information, which prevented data leakage and improved generalization. Finally, integrating the ML predictions into a constrained linear programming optimizer proved effective in translating point-level forecasts into realistic squad selection decision, which respected budget, formation and transfer constraints that mirror the real FPL game. 
+Finally, from a scalability perspective, the pipeline could be extended to support rolling retraining throughout the season, which would allow models to adapt dynamically as the season went on. Although this study focuses on FPL, the pipeline is broadly applicable and could be adapted to other fantasy sports, betting contexts, or constrained decision making problems where predictions must be combined with real world constraints and evaluated over time. 
 
-**Challenges encountered** 
-A major challenge throughout this project was data heterogenity and incompletness. The historical FPL dataset evolved significantly over time, and important variable, such as expected goals (xG) and expected assists (xA) only became available in recent seasons (since the 2022 season). This introduced natural missingness that could not be adressed through simple imputation without risking bias. In order to mitigate this issue, the feature engineering process prioritized robust, universally available variables, whcih selectively incorporating the more advanced metrics such as xG and xA when they were available. Rather than imputing or artificially backfiling these statistics for earlier years, the pipeline allowed the models to exploit these richer feature sets in recent seasons, leveraging the ability of tree-based algorithms to handle structural missingness and heterogenous feature availability.
 
-Another challenge involved the temporal structure of the data. Player participation is irregual for most players. Playes get injured, rotated in and out of the squad, and transfered, which results in a discontinuous series of observations, making the data poorly suited for traditional time-series models. The use of player-gameweek samples with rolling aggregates instead of sequence-based architechture mitigated this. Aditionally, ensuring consistent player and team identifiers across seasons required careful normalization and cross-referencing between datasets, particularity for the more recent seasons where the schema inconsistencies were more frequent. 
+% ================== REFERENCES ==================
+\newpage
+\section*{References}
+\addcontentsline{toc}{section}{References}
 
-From a more computational perspective, managing the end to end pipeline, which spanned from data injestion to feature engineering, model training, optimization and evaluation required careful modularzation to maintain reproducability and prevent cascading errors. This was adressed by creating a strictly structured codebase and having a single executable entry point (main.py).
+% If using biblatex (recommended)
+% \printbibliography[heading=none]
 
-**Comparison with Initial Expectations**
+% Or manually:
+\begin{enumerate}
+    \item Fantasy Premier League. (2025). Fantasy Football Gameweek History for entry 642722. Premier League Website, Retrieved from https://fantasy.premierleague.com/entry/642722/history
+    \item FPL API. (2025). FPL Historical Dataset. Available at https://github.com/vaastav/Fantasy-Premier-League
+    \item Fantasy Premier League. (2025). Fantasy Premier League player, team, and gameweek metadata (bootstrap-static). Available at: https://fantasy.premierleague.com/api/bootstrap-static/
+    \item Groos, D. (2025). OpenFPL: An open-source forecasting method rivaling state-of-the-art Fantasy Premier League services. arXiv. Available at: https://arxiv.org/html/2508.09992v1
+    \item Grinsztajn, L., Oyallon, E., & Varoquaux, G. (2022). Why do tree-based models still outperform deep learning on typical tabular data? arXiv. Available at: https://arxiv.org/abs/2207.08815
+    \item Haval, Bareen & Zeebaree, Subhi. (2024). Parallel Processing Impact on Random Forest Classifier Performance: A CIFAR-10 Dataset Study. Indonesian Journal of Computer Science. 13. 1833-1846.
+    \item Hastie, T., Tibshirani, R., & Friedman, J. (2009). The Elements of Statistical Learning: Data Mining, Inference, and Prediction (2nd ed.). Springer.
+\end{enumerate}
 
-My initial expectations were that gradient-boosting models, particularily LightGBM and XGBoost, would outperform the Random Forest model in predicting next-gameweek FPL points and generatng better performing teams. The results largly confirmed this expectation. Indeed, LightGBM achieved the lowest validation error and was the only model to outperform the FPL average in real-world points, suggesting that the superior predictive accuracy can translate into better downstream decisions when coupled woith the appropriate optimization framework. 
+% ================== APPENDICES ==================
+\newpage
+\appendix
+\section{Additional Figures}
+\label{app:figures}
 
-However, it was unexpected for the performance gap to be as big as it was. While Random Forest and XGBoost performed reasonably in training, both models exhibited poor generalization during the early-season validation window, with negative R^2 values and subpar season level performance. This highlights the sensitivity of FPL predictions to early-season dynamics and suggest that not all tree-based models adapt equally well to shifting player roles and team contexts. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{trainVSvalidMAE.png}
+    \caption{Average validation error per model}
+    \label{fig:placeholder}
+\end{figure}
 
-**Limitations**
+\begin{table}[H]
+\centering
+\caption{Generalization Gap}
+\label{generalization_gap}
 
-Despite its strengths, the proposed approach had several important limitations. Firstly, the model only predicts one week ahead, and does not plan over a longer term, taking into account factors such as upcoming fixture difficulty over multiple weeks. Secondly, the optimizer enforces a one-transfer-per-week rule and does not model chip usage properly, which limits its ability to replicate optimal FPL strategies over a full season.
+\begin{tabularx}{\textwidth}{l c c c c c c}
+\toprule
+\textbf{Model} &
+\textbf{Train\_MAE} &
+\textbf{Valid\_MAE} &
+\textbf{MAE\_GAP} &
+\textbf{Train\_R$^2$} &
+\textbf{Valid\_R$^2$} \\
+\midrule
+RandomForest & 0.698 & 1.363 & -0.665 & 0.699 & 0.253 \\
+XGBoost      & 0.861 & 1.171 & -0.310 & 0.579 & 0.247 \\
+LightGBM     & 1.028 & 1.126 & -0.099 & 0.398 &  0.228 \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
-Furthermore, the model relies on historical numerical data and ignores qualitative information and news such as injuries, suspensions, tactical changes, or managerial decisions, which are factors that often have a significant impact on real world outcomes. The validation period is also relatively short (GW1-GW9), which means that the results may be sensitive to early-season volatility and may not yet fully relflect long-term performance. 
+\section{Code Repository}
+\label{app:code}
 
-Finally, while LightGBM performed the best in this study, the features are specific to the chosen data set, hyperparameters, as well as evaluation window. They should not be interpreted as universally optimal across all season or league contexts. 
 
-**Surprising findings**
+\noindent
+\textbf{GitHub Repository:} \url{https://github.com/comisettim-eng/FPL-Team-Optimizer}
+\subsection{Repository structure}
 
-One of the more surprising findings was the weak generalization performance of XGBoost, as it is often considered one of the strongest gradient-boosting frameworks for tabular data. However, in this study, it underperformed oth LightGBM, and even the Random Forest model in terms of validation accuracy and even season-level outcomes. This suggests that the model choice alone is insufficent. It is the alignment between the model architechture, the data structure and the feature engineering that is critical. 
+\begin{lstlisting}
+FPL-Team-Optimizer/
+  README.md
+  environment.yml
+  setup.py
+  main.py
+  project_report.md
+  project_report.tex
+  PROPOSAL.md
 
-Another interesting observation is that small differences in point level prediction accuracy can have a disproportionately large impact on the season level performance when embedded into the optimization framework. This highlights the importance of evaluating the ML models not only on the standard regression metrics, but also on their effectiveness when it comes to real world decision making. 
+  data/
+    raw/        # Raw FPL data fetched at runtime
+    processed/  # Cleaned + feature-engineered datasets
 
-- **What worked well?** Successful aspects of your approach
-- **Challenges encountered**: Problems faced and how you solved them
-- **Comparison with expectations**: How do results compare to hypotheses?
-- **Limitations**: What are the constraints of your approach?
-- **Surprising findings**: Unexpected discoveries
+  src/
+    data/       # Data ingestion + feature construction
+      __init__.py
+      fetch_fpl_seasons_gw.py
+      build_training_table_seasons.py
 
-# 6. Conclusion
+    models/     # ML training + comparison
+      __init__.py
+      train_compare_models.py
 
-The goal of this project was to investigate the extent to which statistical modeling and machine learning can support decision making in FPL, a game which is often percieved as a mix of analysis, intuition, and luck. By assembling a large, multi-season dataset, which spanned over the past 9 premier league seasons, as well as the ongoing 2025-26 season, the study developed a fully reproducible, end-to-end pipeline for player-level point prediction, team optimization, and real world performance evaluation. 
+    optimize/   # Linear programming squad optimization
+      __init__.py
+      LP_team_optimizer_11P.py
+      ML_season_optimizer_transfers_multi.py
 
-Three ensemble based ML models (Random Forest, LightGBM, and XGBoost) were trained to predict next gameweek FPL points using rolling player, team, and fixture level features. These predictions were then integrated into a linear programming optimizer that constructed valid, rule abiding FPL squads under realistic budget, formation and transfer constraints. The teams that were generated were then evaluated not only by regression metrics on a validation window, but also through their actual FPL scores, compared to that of the average FPL player.
+    evaluate/   # Evaluation + reporting
+      __init__.py
+      compare_models_season_scores.py
+      make_report_artifacts.py
 
-The results clearly indicate that LightGBM outperformed both Random Forets, and XGBoost in this study. Not only did LightGBM achieve the lowest vaidation error at the point prediction level, but it also generated teams that consistently outperformed the global FPL average over multiple gameweeks. In contrast, the weaker predictive accuracy of Random Forest and XGBoost directly translated into inferior team scores, which highlights the importance of robust generalization instead of isolated prediction accuracy. Overall, these findings demonstrate that careful eangineered statistical models can meaningfully outperform average human decision making in FPL, even without having access to qualitative information or other advantages such as chips. 
+  models/
+    ml_models/  # Trained ML models (created at runtime)
 
-While the results are encouraging, there are several extentions that could further improve both predictive relavance and practical relevance. Firstly, including explicit modeling of special FPL mechanics such as the Free Hit, Bench Boost or Triple Captain Chips, which were intentionally excluded in this project, as not every FPL manager would use their chips in the first 11 gameweeks, and this could have resulted in inflated machine learning results. One could integrate these extra factors if one was to simulate over the entire season. This would make the model be closer to real competitive play. Furthermore, including richer contextual features, such as injury news and more qualitative information could further improve the quality of the predictions of the models. An important next step would also be to integrate long-term decision making, where the optimizer bases its weekly player choices based off of the expected results of the player over the next few weeks, not only the upcoming one. 
+  results/     # Generated outputs (tables, figures, predictions)
+  Legacy/      # Deprecated / unused code (not executed)
+  tests/
+\end{lstlisting}
 
-One could also change a methodological aspect of this project. Exploring probabilistic forecasting rather than point estimates could allow the optimizer to account for uncertaintly and downside risk when selecting players. This could be done by incorporating Bayesian or quantile based models, which could help distinguish between high variance and consistently reliable players, which is a critical decision in FPL strategy. 
+\subsection{Installation instructions}
+This project is fully reproducible from a clean environment. All datasets, model artifacts, and evaluation results are generated automatically at runtime and are therefore not included in the repository.
 
-From a scalability perspective, the pipeline could also be adapted in order to support rolling retraining throughout the season, which would allow the model to update dynamically as new data becomes available. This would be particularily valuable early in the season, as the model would learn to adapt to new patterns specific to the new season. 
+To reproduce the full pipeline, the following steps are sufficient:
+\begin{enumerate}
+    \item Clone the repository.
+    \item Create the Python environment using the provided \texttt{environment.yml} file.
+    \item Run the main entry point \texttt{main.py}.
+\end{enumerate}
 
-Even though this project focuses on the FPL, its use and overall framework could be adapted and applied to other fantasy sports, sports betting contexts, or even resource allocation problems where predictions must be combined with hard constraints and real world evaluation. 
+The execution of \texttt{main.py} sequentially performs data collection from the Fantasy Premier League API, feature engineering, model training and comparison, season-long squad optimization using linear programming, and final evaluation against real FPL scores. All outputs (processed data, trained models, tables, and figures) are generated deterministically and saved to the appropriate runtime directories.
 
-In conclusion, this project demonstrates that data driven approaches can move FPL decision making beyond intuition and chance, offering measurable performance gains through systematic modeling and optimization. While luck and intuition do remain unavoidable components of football outcomes, the results show that well designed machine learning systems can signifcantly tilt the odds in favor of statistically informed strategies. In particular, the comparative analysis showed that the LightGBM model consistently outperformed the RandomForest and the XGBoost models, both in point level prediction accuracy as well as FPL performance. This highlights the importance of model choice when translating statistic predictions into effective decision making. 
+No manual intervention is required beyond running the main script.
 
 
 
-## 6.1 Summary
+\noindent
 
-Summarize your key findings and contributions:
+\begin{itemize}
+    \item Repository structure
+    \item Installation instructions
+    \item How to reproduce results
+\end{itemize}
 
-- Main achievements
-- Project objectives met
-- Impact of your work
+\section{AI Tools Used}
+ChatGPT was used to help correct and optimize code in this project, in order to make it more efficient in certain areas. It was also used to help reformulate, and translate parts of the report from french to english.
 
-## 6.2 Future Work
-
-Suggest potential improvements or extensions:
-
-- Methodological improvements
-- Additional experiments to try
-- Real-world applications
-- Scalability considerations
-
-# References
-
-1. https://fantasy.premierleague.com/entry/642722/history
-Author, A. (2024). *Title of Article*. Journal Name, 10(2), 123-145.
-
-2. Smith, B. & Jones, C. (2023). *Book Title*. Publisher.
-
-3. Dataset Source. (2024). Dataset Name. Available at: https://example.com
-
-4. Library Documentation. (2024). *Library Name Documentation*. https://docs.example.com
-
-# Appendices
-
-## Appendix A: Additional Results
-
-Include supplementary figures or tables that support but aren't essential to the main narrative.
-
-## Appendix B: Code Repository
-
-**GitHub Repository:** https://github.com/yourusername/project-repo
-
-### Repository Structure
-
-```
-project-repo/
-├── README.md
-├── requirements.txt
-├── data/
-│   ├── raw/
-│   └── processed/
-├── src/
-│   ├── preprocessing.py
-│   ├── models.py
-│   └── evaluation.py
-├── notebooks/
-│   └── exploration.ipynb
-└── results/
-    └── figures/
-```
-
-### Installation Instructions
-
-```bash
-git clone https://github.com/yourusername/project-repo
-cd project-repo
-pip install -r requirements.txt
-```
-
-### Reproducing Results
-
-```bash
-python src/main.py --config config.yaml
-```
-
----
-
-*Note: This report should be exactly 10 pages when rendered. Use the page count in your PDF viewer to verify.*
-
----
-
-## Conversion to PDF
-
-To convert this Markdown file to PDF, use pandoc:
-
-```bash
-pandoc project_report.md -o project_report.pdf --pdf-engine=xelatex
-```
-
-Or with additional options:
-
-```bash
-pandoc project_report.md \
-  -o project_report.pdf \
-  --pdf-engine=xelatex \
-  --highlight-style=pygments \
-  --toc \
-  --number-sections
-```
-    </div>
-</article>
-        </div>
-    </main>
-
-    <footer class="site-footer">
-        <div class="wrapper">
-            <p class="license">
-                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
-                    <img alt="Creative Commons License" style="border-width:0; height: 31px; width: auto; display: block; margin: 0 auto 0.5rem auto;" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
-                </a>
-                This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-            </p>
-            <p class="citation">
-                <strong>Cite as:</strong> Scheidegger, S., & Smirnova, A. (2025). <em>Data Science and Advanced Programming 2025</em>. HEC Lausanne, University of Lausanne. 
-                <a href="/course-materials/citation">View citation formats →</a>
-            </p>
-            <p class="credits">Made with 💙 by Anna Smirnova, Prof. Simon Scheidegger, and Claude 🤖</p>
-            <p class="powered-by">
-                <a href="https://nuvolos.cloud" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; color: inherit; text-decoration: none;">
-                    Powered by
-                    <img src="/course-materials/assets/images/nuvolos_logo.svg" alt="Nuvolos" style="height: 20px; width: auto; opacity: 0.8;">
-                </a>
-            </p>
-        </div>
-    </footer>
-
-    <!-- Smooth Page Transitions -->
-    <style>
-    /* No CSS transitions - just AJAX navigation */
-    
-    /* Smooth scrolling for same-page links */
-    html {
-        scroll-behavior: smooth;
-    }
-    
-    /* Removed underline animation - clean hover effect only */
-    </style>
-
-    <script>
-    // Smooth SPA-style navigation
-    document.addEventListener('DOMContentLoaded', function() {
-        const pageContent = document.querySelector('.page-wrapper');
-        const navLinks = document.querySelectorAll('.nav-links a');
-        
-        // Handle navigation clicks with AJAX
-        navLinks.forEach(link => {
-            // Skip external links
-            if (link.hostname !== window.location.hostname) {
-                return;
-            }
-            
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const url = this.href;
-                const currentPath = window.location.pathname;
-                
-                // Skip if same page
-                if (url === window.location.href) {
-                    return;
-                }
-                
-                // Fetch new page content
-                fetch(url)
-                    .then(response => response.text())
-                    .then(html => {
-                        // Parse the new page
-                        const parser = new DOMParser();
-                        const newDoc = parser.parseFromString(html, 'text/html');
-                        const newContent = newDoc.querySelector('.page-wrapper');
-                        const newTitle = newDoc.querySelector('title');
-                        
-                        // Update content instantly
-                        if (newContent) {
-                            pageContent.innerHTML = newContent.innerHTML;
-                            
-                            // Re-execute any script tags in the new content
-                            const scripts = pageContent.querySelectorAll('script');
-                            scripts.forEach(script => {
-                                const newScript = document.createElement('script');
-                                if (script.src) {
-                                    newScript.src = script.src;
-                                } else {
-                                    newScript.textContent = script.textContent;
-                                }
-                                script.parentNode.replaceChild(newScript, script);
-                            });
-                        }
-                        if (newTitle) {
-                            document.title = newTitle.textContent;
-                        }
-                        
-                        // Update URL without reload
-                        history.pushState({}, '', url);
-                        
-                        // Update active navigation
-                        updateActiveNav(url);
-                        
-                        // Scroll to top
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    })
-                    .catch(error => {
-                        console.log('AJAX failed, falling back to normal navigation');
-                        window.location.href = url;
-                    });
-            });
-        });
-        
-        // Handle browser back/forward
-        window.addEventListener('popstate', function() {
-            window.location.reload();
-        });
-        
-        // Update active navigation state
-        function updateActiveNav(currentUrl) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.href === currentUrl || 
-                    (currentUrl.includes('/week/') && link.href.includes('/weekly-materials'))) {
-                    link.classList.add('active');
-                }
-            });
-        }
-        
-        // Initial active state
-        updateActiveNav(window.location.href);
-    });
-    </script>
-</body>
-</html>
+\end{document}

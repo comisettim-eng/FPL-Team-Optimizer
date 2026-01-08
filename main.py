@@ -25,7 +25,7 @@ if str(PROJECT_ROOT) not in sys.path:
 # ---------------------------------------------------------------------
 # Import pipeline steps
 # ---------------------------------------------------------------------
-from src.data.fetch_fpl_seasons_gw import main as build_season_data
+from src.data.fetch_fpl_seasons_gw import main as build_season_data 
 from src.data.build_training_table_seasons import main as build_feature_tables
 from src.models.train_compare_models import main as train_ml_models
 
@@ -139,7 +139,7 @@ def build_final_results_summary(
     reg_keep = [c for c in reg_keep if c in reg_df.columns]
     out = out.merge(reg_df[reg_keep], on="model_key", how="left")
 
-    rank_keep = ["model_key"] + [c for c in rank_df.columns if c.startswith("spearman") or c.startswith("top")]
+    rank_keep = ["model_key"] + [c for c in rank_df.columns if c.startswith("spearman")]
     rank_keep = [c for c in rank_keep if c in rank_df.columns]
     out = out.merge(rank_df[rank_keep], on="model_key", how="left")
 
@@ -157,8 +157,6 @@ def build_final_results_summary(
         "valid_rmse",
         "valid_r2",
         "spearman_rho",
-        "top11_overlap_precision",
-        "top15_overlap_precision",
         "season_total_points",
         "train_time_sec",
     ]

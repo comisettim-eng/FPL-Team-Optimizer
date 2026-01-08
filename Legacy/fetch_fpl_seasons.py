@@ -12,7 +12,7 @@ FPL_GITHUB_BASE = (
     "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/master/data"
 )
 
-# Seasons available (you can extend this list later if needed)
+# Seasons available
 SEASONS = [
     "2016-17",
     "2017-18",
@@ -25,7 +25,7 @@ SEASONS = [
     "2024-25",
 ]
 
-# Project paths (same style as your existing script)
+# Project paths (same style as existing script)
 BASE_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = BASE_DIR / "data"
 RAW_DIR = DATA_DIR / "raw"
@@ -75,14 +75,14 @@ def save_raw_snapshot_csv(df: pd.DataFrame, season: str, name: str = "players_ra
 
 
 # -------------------------------------------------------------------
-# BUILD CLEAN PLAYER DF (SIMILAR SHAPE AS YOUR ORIGINAL)
+# BUILD CLEAN PLAYER DF
 # -------------------------------------------------------------------
 def build_players_df(players: pd.DataFrame, teams_lookup: pd.DataFrame, season: str) -> pd.DataFrame:
     """
     Create a clean player dataframe with all variables needed for the optimizer
     for a single season, using players_raw.csv + master_team_list.csv.
 
-    This mirrors the structure of your original build_players_df, with an
+    This mirrors the structure of original build_players_df, with an
     extra 'season' column.
     """
     # Subset to the columns we care about
@@ -173,7 +173,7 @@ def build_players_df(players: pd.DataFrame, teams_lookup: pd.DataFrame, season: 
 
     # Re-order columns to be optimizer-friendly
     cols_final = [
-        "season",          # extra vs your original
+        "season",         
         "player_id",
         "name",
         "team_id",

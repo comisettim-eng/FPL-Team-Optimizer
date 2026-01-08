@@ -12,14 +12,14 @@ import pulp as pl
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.append(str(PROJECT_ROOT))
 
-# Your existing LP model with prev_squad_ids + transfers_per_gw support
+# existing LP model with prev_squad_ids + transfers_per_gw support
 from src.optimize.LP_team_optimizer_11P import build_team_optimizer
 
 DATA_DIR = PROJECT_ROOT / "data" / "processed"
 SOLUTIONS_DIR = PROJECT_ROOT / "results" / "ml_season_solutions"
 SOLUTIONS_DIR.mkdir(parents=True, exist_ok=True)
 
-# File produced by your train_model() script
+# File produced by train_model() script
 PREDICTIONS_CSV = DATA_DIR / "player_gw_predictions_2025_26.csv"
 
 # Current-season players file from fetch_fpl_seasons_gw.py
@@ -68,13 +68,13 @@ def load_players_current_season() -> pd.DataFrame:
 
 def load_predictions_table() -> pd.DataFrame:
     """
-    Load the table produced by your train_model() script, with columns:
+    Load the table produced by train_model() script, with columns:
         season, gameweek, player_id, predicted_next_points
     """
     if not PREDICTIONS_CSV.exists():
         raise FileNotFoundError(
             f"Predictions file not found: {PREDICTIONS_CSV}\n"
-            "Run your training script first."
+            "Run training script first."
         )
 
     df = pd.read_csv(PREDICTIONS_CSV)

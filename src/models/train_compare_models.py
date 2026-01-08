@@ -367,7 +367,7 @@ def main():
     y_valid_array = y_valid.to_numpy(dtype=float)
 
     # -----------------------------------------------------------------
-    # MODELS
+    # THE MODELS
     # -----------------------------------------------------------------
     models = {
         "RandomForest": RandomForestRegressor(
@@ -385,7 +385,7 @@ def main():
             subsample=0.8,
             colsample_bytree=0.8,
             random_state=42,
-            n_jobs=-1,
+            n_jobs=1,
             verbose=-1,
         ),
         "XGBoost": XGBRegressor(
@@ -396,7 +396,7 @@ def main():
             colsample_bytree=0.8,
             objective="reg:squarederror",
             random_state=42,
-            n_jobs=-1,
+            n_jobs=1,
             verbosity=0,
         ),
     }
@@ -565,7 +565,7 @@ def main():
         meta_path.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
         print(f"Saved {name} model + metadata (key={sk}).")
 
-        # detailed backtest predictions for validation window
+        # backtest predictions for validation window
         y_pred = np.asarray(res["y_pred_valid"], dtype=float)
         preds_df = valid_meta.copy()
         preds_df["y_true"] = y_valid_array

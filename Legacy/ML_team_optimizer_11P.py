@@ -12,7 +12,7 @@ import pulp as pl
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.append(str(PROJECT_ROOT))
 
-from src.optimize.LP_team_optimizer_11P import build_team_optimizer  # your existing LP model
+from src.optimize.LP_team_optimizer_11P import build_team_optimizer  # existing LP model
 
 DATA_DIR = PROJECT_ROOT / "data" / "processed"
 PREDICTIONS_DIR = PROJECT_ROOT / "results" / "ml_predictions"
@@ -36,7 +36,7 @@ def load_predictions_for_gw(gw: int) -> pd.DataFrame:
     if not path.exists():
         raise FileNotFoundError(
             f"Predictions file not found: {path}\n"
-            f"Run your prediction script first, e.g.: "
+            f"Run prediction script first, e.g.: "
             f"`python -m src.ml.predict_next_gameweek --gw {gw}`"
         )
 
@@ -129,7 +129,7 @@ if __name__ == "__main__":
         type=int,
         default=None,
         help="Gameweek for which to build optimized team (e.g. 12)."
-            "You must already have predictions_gw<gw>.csv in results/ml_prediction."
+            "Must already have predictions_gw<gw>.csv in results/ml_prediction."
 
     )
     parser.add_argument(
